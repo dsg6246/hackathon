@@ -10,7 +10,6 @@ header {
     color: #FAF5EE;
     padding: 20px;
     text-align: center;
-    word-spacing: 5px;
 }
 
 /* Navigation Bar */
@@ -48,36 +47,4 @@ body {
     text-align: center;
     background-color: #f4f4f9;
     text-orientation: center;
-}
-
-
-
-/* Default Light Mode Styles */
-body {
-    background-color: white;
-    color: black;
-    font-family: 'Alegreya Sans SC', sans-serif;
-}
-
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #121212;
-    color: white;
-}
-
-header.dark-mode {
-    background-color: #222222;
-    color: #D3A121;
-}
-
-button.darkModeToggle {
-    background-color: #333;
-    color: #D3A121;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-button.darkModeToggle:hover {
-    background-color: #444;
 }

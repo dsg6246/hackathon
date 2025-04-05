@@ -137,35 +137,3 @@ nav a:hover {
 nav a:active {
     background-color: #1D503A;
 }
-
-
-
-/* Default Light Mode Styles */
-body {
-    background-color: white;
-    color: black;
-    font-family: 'Alegreya Sans SC', sans-serif;
-}
-
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #121212;
-    color: white;
-}
-
-header.dark-mode {
-    background-color: #222222;
-    color: #D3A121;
-}
-
-button.darkModeToggle {
-    background-color: #333;
-    color: #D3A121;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-button.darkModeToggle:hover {
-    background-color: #444;
-}

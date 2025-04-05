@@ -7,11 +7,10 @@ body {
 }
 
 /* Header styling */
-
 header {
   background-color: #1D503A;
   color: #FAF5EE;
-  padding: 20px;
+  padding: 15px;
   text-align: center;
   position: fixed;
   top: 0;
@@ -19,7 +18,6 @@ header {
   width: 100%;
   z-index: 1000;
   box-sizing: border-box;
-  word-spacing: 5px;
 }
 
 header h1 {
@@ -189,26 +187,4 @@ nav a:hover {
 
 nav a:active {
   background-color: #123527 ;
-}
-
-
-
-/* Dark mode styles */
-body.dark-mode {
-  background-color: #333;
-  color: #fff;
-}
-
-body.dark-mode .theme-toggle {
-  background-color: #278783;
-}
-
-body.dark-mode .fa-moon {
-  transform: translateX(100%);
-  opacity: 0;
-}
-
-body.dark-mode .fa-sun {
-  transform: translateX(-100%);
-  opacity: 1;
 }

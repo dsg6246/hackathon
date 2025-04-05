@@ -159,3 +159,27 @@ function displayComments(index) {
 displayPosts();
 displayEvents();
 displayDiscussions();
+
+
+// Dark mode toggle functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Check if dark mode is enabled in localStorage and apply it
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        body.classList.add('dark-mode');
+    }
+
+    // Toggle dark mode on icon click
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        // Store dark mode preference in localStorage
+        if (body.classList.contains('dark-mode')) {
+            localStorage.setItem('darkMode', 'enabled');
+        } else {
+            localStorage.removeItem('darkMode');
+        }
+    });
+});

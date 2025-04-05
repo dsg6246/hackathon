@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome -->
+
     <style>
         #secretDiv {
           display: none;
@@ -22,24 +24,67 @@
             padding-left: 10px;
             width: 570px;
         }
+        .images {
+            display: flex;
+            align-items: center; /* Vertically center the items */
+            justify-content: center; /* Center all items as a group */
+            gap: 0px; /* Optional: space between image and heading */
+            padding: px;
+
+        }
+
+        .images img {
+            height: 60px; /* Set the image size */
+            width: auto;
+            border-radius: 10px;
+        }
+
+        .images h1 {
+
+            padding-right: 100px;
+            margin: 0;
+            flex-grow: 1;
+            text-align: center;
+            justify-content: center;
+        }
+        .images nav{
+            
+        }
+
         
       </style>
       <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
 
+    
 </head>
 <body>
 
     <header id="header">
-        <img src="" alt="Community Connect">
-        <nav>
-            <a href="../main/index.html">Home</a>
-            <a href="../news/news.html">News</a>
-            <a href="../events/events.html">Events</a>
-            <a href="../post/post.html">Posts</a>
-            <a href="../accountInfo/account.html">Account-Info</a>
-        </nav>
+        
+        <div class="images">
+            
+
+            <img src="../img/IMG_4967.jpg" alt="Community Connect" >
+            <h1>Community Connect</h1>
+            
+            
+            <nav>
+                <a href="../main/index.html" class="a">Home</a>
+                <a href="../news/news.html" class="a">News</a>
+                <a href="../events/events.html" class="a">Events</a>
+                <a href="../post/post.html" class="a">Posts</a>
+                <a href="../accountInfo/account.html" class="a">Account-Info</a>
+                <button class="darkModeToggle">Dark</button>
+            </nav>
+        </div>
+        <!-- Replace dark mode button with Font Awesome icons -->
+<div class="theme-toggle" id="theme-toggle">
+    <i class="fas fa-moon"></i>
+    <i class="fas fa-sun"></i>
+</div>
+
     </header>
 
     <html lang="en">
@@ -47,7 +92,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Description Box</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -60,12 +105,13 @@
         <h2>Enter the district code:</h2>
         <input type="text" id="codeInput" placeholder="Enter code">
         <button onclick="checkCode()">Submit</button>
+        <button onclick="resetColors()">Leave group</button>
     </div>
-    <div class="description-box" id="secretDiv" style="background-color: grey; border-color: black; border-width: 5px;">
-        <h2 style="color:navy;">About Bergen County Technical School - Teterboro</h2>
-        <h3 style="color: navy; ">Empowering Tomorrow's Innovators - Today</h3>
-        <p class="color" style="color: rgb(255, 193, 35);">Bergen County Technical High School - Teterboro is a leading institution offering rigorous academics, cutting-edge career and technical education, and a vibrant student life—all designed to prepare students for college, careers, and beyond. Our school provides diverse pathways in STEM, health sciences, visual arts, business, and more. Whether you're a prospective student, parent, or current member of our school community, this is your hub for everything Bergen Tech.</p>
-        <ul style="color: rgb(255,193,35);">
+    <div class="description-box" id="secretDiv" style="background-color: #0B0B0B; border-color: black; border-width: 5px;">
+        <h2 style="color: #D3A121;">About Bergen County Technical School - Teterboro</h2>
+        <h3 style="color: #D3A121; ">Empowering Tomorrow's Innovators - Today</h3>
+        <p class="color" style="color: #D3A121;">Bergen County Technical High School - Teterboro is a leading institution offering rigorous academics, cutting-edge career and technical education, and a vibrant student life—all designed to prepare students for college, careers, and beyond. Our school provides diverse pathways in STEM, health sciences, visual arts, business, and more. Whether you're a prospective student, parent, or current member of our school community, this is your hub for everything Bergen Tech.</p>
+        <ul style="color: #D3A121;">
             
             <li>News & Announcements:
                 <br>
@@ -92,22 +138,52 @@
         </ul>
 
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    // Check if dark mode is enabled in localStorage and apply it
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+        document.querySelector('header').classList.add('dark-mode');
+    }
+
+    // Dark mode toggle button
+    const darkModeToggle = document.querySelector('.darkModeToggle');
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            document.querySelector('header').classList.toggle('dark-mode');
+
+            // Store the user's dark mode preference
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.removeItem('darkMode');
+            }
+        });
+    }
+});
+    </script>
+
+    <!--
     <script>
         const correctCode = "BCTS Teterboro";
 
         function checkCode() {
-        const userInput = document.getElementById("codeInput").value;
-        const secretDiv = document.getElementById("secretDiv");
-
-        if (userInput === correctCode) {
-            secretDiv.style.display = "block";
-            header.style.backgroundColor = "black";
-            header.style.color="gold"
-        } else {
-            alert("Incorrect code. Try again.");
-        }
+            const userInput = document.getElementById("codeInput").value;
+            const secretDiv = document.getElementById("secretDiv");
+            
+            if (userInput === correctCode) {
+                secretDiv.style.display = "block";
+                header.style.backgroundColor = "black";
+                header.style.color="#D3A121"
+            } else {
+                alert("Incorrect code. Try again.");
+            }
         }
     </script>
+    -->
+    <script src="../header.js"></script>
 </body>
 </html>
     

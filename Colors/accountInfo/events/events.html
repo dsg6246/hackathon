@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Events</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <header>
+        <h1>Community Connect</h1>
+        <nav>
+            <a href="../main/index.html">Home</a>
+            <a href="../news/news.html">News</a>
+            <a href="../events/events.html">Events</a>
+            <a href="../post/post.html">Posts</a>
+            <a href="../accountInfo/account.html">Account-Info</a>
+        </nav>
+    </header>
+
+    <!-- Event Post Form -->
+    <h2>Post an Event</h2>
+    <form id="eventForm">
+        <label for="event_name">Event Name:</label><br>
+        <input type="text" id="event_name" name="event_name" required><br><br>
+
+        <label for="event_date">Event Date:</label><br>
+        <input type="date" id="event_date" name="event_date" required><br><br>
+
+        <label for="event_description">Event Description:</label><br>
+        <textarea id="event_description" name="event_description" required></textarea><br><br>
+
+        <button type="submit">Post Event</button>
+    </form>
+
+    <!-- Display Events -->
+    <h2>Upcoming Events</h2>
+    <div id="eventList"></div>
+
+    <div id="calendar"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
