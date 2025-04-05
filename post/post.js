@@ -1,70 +1,59 @@
-const sendBtn = document.getElementById('send-btn');
-const messageInput = document.getElementById('message-input');
-const chatBox = document.getElementById('chat-box');
-const sendImageBtn = document.getElementById('send-image-btn');
-const imageInput = document.getElementById('image-input');
+// Get references to DOM elements
+const sendImageBtn = document.getElementById('send-image-btn'); // Button to trigger image upload
+const sendBtn = document.getElementById('send-btn'); // Button to send text messages
+const messageInput = document.getElementById('message-input'); // Input for text messages
+const imageInput = document.getElementById('image-input'); // Hidden file input for image selection
+const chatBox = document.getElementById('chat-box'); // Chat box where messages are displayed
 
-// List of words to censor
-const curseWords = ["badword1", "badword2", "curseword1", "curseword2"]; // Add your own curse words here
+// Event listener for "Send Image" button
+sendImageBtn.addEventListener('click', function () {
+    imageInput.click(); // Trigger the hidden file input when the "Send Image" button is clicked
+});
 
-// Function to censor curse words in the message
-function censorMessage(message) {
-    let censoredMessage = message;
-    curseWords.forEach(word => {
-        const regex = new RegExp(`\\b${word}\\b`, 'gi');  // Match the word case-insensitively
-        censoredMessage = censoredMessage.replace(regex, '****');
-    });
-    return censoredMessage;
-}
-
-// Function to send a text message
-function sendMessage() {
-    let messageText = messageInput.value.trim();
-    if (messageText !== '') {
-        messageText = censorMessage(messageText); // Censor curse words
-
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message', 'sent');
-        messageDiv.textContent = messageText;
-        chatBox.appendChild(messageDiv);
-        
-        messageInput.value = '';
-        chatBox.scrollTop = chatBox.scrollHeight;
-    }
-}
-
-// Function to send an image message
-function sendImage() {
-    const file = imageInput.files[0];
+// Event listener for file selection (image upload)
+imageInput.addEventListener('change', function () {
+    const file = imageInput.files[0]; // Get the selected image file
     if (file) {
-        const reader = new FileReader();
-        
-        reader.onload = function(event) {
+        const reader = new FileReader();  // Create FileReader to read the file
+
+        reader.onload = function (event) {
+            // When the file is successfully read, display it
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('message', 'sent');
             
-            const imageElement = document.createElement('img');
-            imageElement.src = event.target.result;
+            const imageElement = document.createElement('img');  // Create an img element
+            imageElement.src = event.target.result;  // Set the image source to base64 string
+            imageElement.style.maxWidth = '100%';  // Ensure the image fits within the chat
             messageDiv.appendChild(imageElement);
-            
-            chatBox.appendChild(messageDiv);
-            chatBox.scrollTop = chatBox.scrollHeight;
+
+            chatBox.appendChild(messageDiv); // Add the message (with image) to the chat
+            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the new message
         };
-        
-        reader.readAsDataURL(file);  // Converts image to base64 string
-        imageInput.value = '';  // Clear the file input after sending the image
+
+        reader.readAsDataURL(file);  // Read the file as a base64 string
     }
-}
+});
 
-// Event listener for the send button (text)
-sendBtn.addEventListener('click', sendMessage);
+// Event listener for text message "Send" button
+sendBtn.addEventListener('click', function () {
+    const messageText = messageInput.value.trim(); // Get the message text
+    if (messageText) {
+        // Create a new message div
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', 'sent');
+        
+        // Add the text message inside the message div
+        messageDiv.textContent = messageText;
+        chatBox.appendChild(messageDiv); // Add the message to the chat
+        
+        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the new message
+        messageInput.value = ''; // Clear the input field after sending the message
+    }
+});
 
-// Event listener for the send button (image)
-sendImageBtn.addEventListener('click', sendImage);
-
-// Event listener for Enter key press (text)
-messageInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        sendMessage();
+// Optional: Handle the "Enter" key for sending text messages
+messageInput.addEventListener('keypress', function (event) {
+    if (event.key === 'Enter') {
+        sendBtn.click(); // Trigger the send button click when "Enter" is pressed
     }
 });
