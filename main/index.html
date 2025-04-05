@@ -24,10 +24,14 @@
         }
         
       </style>
+      <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
-    <header>
+    <header id="header">
         <h1>Community Connect</h1>
         <nav>
             <a href="../main/index.html">Home</a>
@@ -57,12 +61,12 @@
         <input type="text" id="codeInput" placeholder="Enter code">
         <button onclick="checkCode()">Submit</button>
     </div>
-    <div class="description-box" id="secretDiv">
-        <h2>About Bergen County Technical Schools</h2>
-        <h3>Welcome to Bergen County Technical High School</h5>
-        <h4>Empowering Tomorrow's Innovators - Today</h6>
-        <p class="color" style="color: black;">Bergen County Technical High School is a leading institution offering rigorous academics, cutting-edge career and technical education, and a vibrant student life—all designed to prepare students for college, careers, and beyond. Our school provides diverse pathways in STEM, health sciences, visual arts, business, and more. Whether you're a prospective student, parent, or current member of our school community, this is your hub for everything Bergen Tech.</p>
-        <ul style="color: black;">
+    <div class="description-box" id="secretDiv" style="background-color: grey; border-color: black; border-width: 5px;">
+        <h2 style="color:navy;">About Bergen County Technical Schools</h2>
+        <h3 style="color: navy;">Welcome to Bergen County Technical High School</h5>
+        <h4 style="color: gold;">Empowering Tomorrow's Innovators - Today</h6>
+        <p class="color" style="color: gold;">Bergen County Technical High School is a leading institution offering rigorous academics, cutting-edge career and technical education, and a vibrant student life—all designed to prepare students for college, careers, and beyond. Our school provides diverse pathways in STEM, health sciences, visual arts, business, and more. Whether you're a prospective student, parent, or current member of our school community, this is your hub for everything Bergen Tech.</p>
+        <ul style="color: gold;">
             
             <li>News & Announcements:
                 <br>
@@ -88,15 +92,6 @@
             </li>
         </ul>
 
-
-
-
-
-
-
-
-       
-        
     </div>
     <script>
         const correctCode = "BCTS Teterboro";
@@ -107,6 +102,8 @@
 
         if (userInput === correctCode) {
             secretDiv.style.display = "block";
+            header.style.backgroundColor = "black";
+            header.style.color="gold"
         } else {
             alert("Incorrect code. Try again.");
         }

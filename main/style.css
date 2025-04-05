@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Alegreya Sans SC', sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f9;
@@ -17,6 +17,7 @@ header {
     color: #FAF5EE;
     padding: 20px;
     text-align: center;
+    word-spacing: 5px;
 }
 
 section {

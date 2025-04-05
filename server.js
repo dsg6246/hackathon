@@ -74,17 +74,7 @@ app.post('/messages', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
-1.3 Create Models
-User Model: For handling user registration and login.
 
-Message Model: For storing chat messages.
-
-Create two files User.js and Message.js in a models folder:
-
-models/User.js:
-
-javascript
-Copy
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
