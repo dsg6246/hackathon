@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Events</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .event { border: 1px solid #ccc; margin-bottom: 10px; padding: 10px; }
-        .event h3 { margin: 0; }
-        .event p { margin: 5px 0; }
-        form input, form textarea { margin-bottom: 10px; width: 100%; padding: 8px; }
-        form button { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <h1>Community Events</h1>
+    <header>
+        <h1>Community Connect</h1>
+        <nav>
+            <a href="../main/index.html">Home</a>
+            <a href="../news/news.html">News</a>
+            <a href="../events/events.html">Events</a>
+            <a href="../post/post.html">Posts</a>
+            <a href="../accountInfo/account.html">Account-Info</a>
+        </nav>
+    </header>
 
     <!-- Event Post Form -->
     <h2>Post an Event</h2>
@@ -36,72 +38,9 @@
     <h2>Upcoming Events</h2>
     <div id="eventList"></div>
 
-    <script>
-        // Load events from localStorage
-        function loadEvents() {
-            const savedEvents = localStorage.getItem('events');
-            if (savedEvents) {
-                return JSON.parse(savedEvents); // Parse the stored JSON to an array
-            }
-            return []; // Return an empty array if no events are stored
-        }
+    <div id="calendar"></div>
 
-        // Save events to localStorage
-        function saveEvents(events) {
-            localStorage.setItem('events', JSON.stringify(events)); // Save the events array as a JSON string
-        }
-
-        // Display events on the page
-        function displayEvents(events) {
-            const eventList = document.getElementById('eventList');
-            eventList.innerHTML = ''; // Clear current list
-            events.forEach(event => {
-                const eventElement = document.createElement('div');
-                eventElement.classList.add('event');
-                eventElement.innerHTML = `
-                    <h3>${event.name}</h3>
-                    <p><strong>Date:</strong> ${event.date}</p>
-                    <p><strong>Description:</strong> ${event.description}</p>
-                `;
-                eventList.appendChild(eventElement);
-            });
-        }
-
-        // Handle form submission to add a new event
-        document.getElementById('eventForm').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission to server
-
-            // Get event details from form
-            const eventName = document.getElementById('event_name').value;
-            const eventDate = document.getElementById('event_date').value;
-            const eventDescription = document.getElementById('event_description').value;
-
-            // Get existing events from localStorage
-            const events = loadEvents();
-
-            // Add the new event
-            events.push({
-                name: eventName,
-                date: eventDate,
-                description: eventDescription
-            });
-
-            // Save updated events to localStorage
-            saveEvents(events);
-
-            // Display the updated list of events
-            displayEvents(events);
-
-            // Clear the form inputs
-            document.getElementById('eventForm').reset();
-        });
-
-        // Load and display events when the page loads
-        window.onload = function() {
-            const events = loadEvents();
-            displayEvents(events);
-        }
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>

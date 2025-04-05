@@ -12,15 +12,34 @@ header {
     text-align: center;
 }
 
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px; /* Space below the header title */
+}
+
 nav a {
-    margin: 0 15px;
     color: white;
     text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    background-color: gold;
+    color: white;
 }
+
+nav a:active {
+    background-color: gold;
+}
+
 
 section {
     padding: 20px;

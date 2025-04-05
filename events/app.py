@@ -1,7 +1,9 @@
 from flask import Flask, request, jsonify
 import sqlite3
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)  # This will enable CORS for all routes so the frontend can interact with the backend
 
 # Create SQLite database and events table
 def init_db():
@@ -30,7 +32,6 @@ def get_events():
     events = cursor.fetchall()
     conn.close()
 
-    # Return the events as JSON
     return jsonify([{
         'name': event[1],
         'date': event[2],
