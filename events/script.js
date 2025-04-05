@@ -113,8 +113,8 @@ function generateCalendar() {
     
     const date = new Date();
     const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    
+    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);}
+    /*
     // Add the days of the month to the calendar
     for (let i = 1; i <= lastDay.getDate(); i++) {
         const dayDiv = document.createElement('div');
@@ -126,7 +126,7 @@ function generateCalendar() {
     
     calendarDiv.appendChild(monthDiv);
 }
-
+*/
 // Load events and generate calendar when the page loads
 generateCalendar();
 loadEvents();

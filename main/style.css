@@ -6,40 +6,11 @@ body {
 }
 
 header {
-    background-color: black;
-    color: white;
+    background-color: #278783;
+    color: #FFEBD0;
     padding: 20px;
     text-align: center;
 }
-
-/* Navigation Bar */
-nav {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 10px; /* Space below the header title */
-}
-
-nav a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    font-weight: bold;
-    font-size: 1rem;
-    text-transform: uppercase;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-nav a:hover {
-    background-color: gold;
-    color: white;
-}
-
-nav a:active {
-    background-color: gold;
-}
-
 
 section {
     padding: 20px;
@@ -56,8 +27,8 @@ h2 {
 
 textarea, input[type="text"], input[type="date"] {
     width: 100%;
-    padding: 10px;
-    margin: 5px 0;
+    padding: 20px;
+    margin: 20px 0;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
@@ -81,8 +52,8 @@ button:hover {
 
 .post, .event, .discussion {
     background-color: #fff;
-    padding: 15px;
-    margin: 10px 0;
+    padding: 20px;
+    margin: 20px 0;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
@@ -139,4 +110,75 @@ footer {
 
 .toggle-comments:hover {
     color: #0056b3;
+}
+
+/* Navigation Bar */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px; /* Space below the header title */
+}
+
+nav a {
+    color: #FFEBD0;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #1f6a6d;
+    color: white;
+}
+
+nav a:active {
+    background-color: #1f6a6d;
+}
+
+/* Styling the description box */
+.description-box {
+    background-color: #f9f9f9; /* Light background color */
+    border: 1px solid #ddd;    /* Light border */
+    border-radius: 10px;       /* Rounded corners */
+    padding: 20px;             /* Inner padding */
+    max-width: 600px;          /* Max width for the box */
+    margin: 20px auto;         /* Center the box horizontally */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.description-box h2 {
+    font-size: 24px;           /* Bigger font size for the heading */
+    color: #333;               /* Dark color for the heading */
+}
+
+.description-box p {
+    font-size: 16px;           /* Normal font size for the paragraph */
+    color: #555;               /* Lighter color for the paragraph */
+    line-height: 1.6;          /* Increased line height for readability */
+}
+
+.description-box {
+    background-color: #f9f9f9; /* Light background color */
+    border: 1px solid #ddd;    /* Light border */
+    border-radius: 10px;       /* Rounded corners */
+    padding: 20px;             /* Inner padding */
+    max-width: 600px;          /* Max width for the box */
+    margin: 20px auto;         /* Center the box horizontally */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.description-box h2 {
+    font-size: 24px;           /* Bigger font size for the heading */
+    color: #333;               /* Dark color for the heading */
+}
+
+.description-box p {
+    font-size: 16px;           /* Normal font size for the paragraph */
+    color: #555;               /* Lighter color for the paragraph */
+    line-height: 1.6;          /* Increased line height for readability */
 }
