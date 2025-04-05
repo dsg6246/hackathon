@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="account-info-page">
+        <h2>Account Information</h2>
+        
+        <!-- Change Username -->
+        <div class="change-username">
+          <h3>Change Username</h3>
+          <label for="current-username">Current Username</label>
+          <input type="text" id="current-username" value="User123" disabled>
+          <label for="new-username">New Username</label>
+          <input type="text" id="new-username" placeholder="Enter new username">
+          <label for="confirm-username">Confirm New Username</label>
+          <input type="text" id="confirm-username" placeholder="Confirm new username">
+          <button onclick="saveUsername()">Save Username Change</button>
+        </div>
+        
+        <!-- Change Password -->
+        <div class="change-password">
+          <h3>Change Password</h3>
+          <label for="current-password">Current Password</label>
+          <input type="password" id="current-password" placeholder="Enter current password">
+          <label for="new-password">New Password</label>
+          <input type="password" id="new-password" placeholder="Enter new password">
+          <label for="confirm-password">Confirm New Password</label>
+          <input type="password" id="confirm-password" placeholder="Confirm new password">
+          <button onclick="savePassword()">Save Password Change</button>
+        </div>
+        
+        <!-- Change Profile Picture -->
+        <div class="change-profile-picture">
+          <h3>Change Profile Picture</h3>
+          <img id="profile-picture" src="profile.jpg" alt="Current Profile Picture">
+          <input type="file" id="new-profile-picture" accept="image/*">
+          <button onclick="uploadProfilePicture()">Upload New Picture</button>
+        </div>
+        
+        <footer>
+          <button onclick="cancelChanges()">Cancel</button>
+          <button onclick="saveChanges()">Save Changes</button>
+        </footer>
+      </div>
+      
+</body>
+</html>
