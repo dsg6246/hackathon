@@ -1,3 +1,39 @@
+// Import Firebase modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+// Firebase config object (copy from the Firebase console)
+const firebaseConfig = {
+
+  apiKey: "AIzaSyBxPRpFQ5YRdE-bug7pedUYbZjPlELX72E",
+
+  authDomain: "hackathon-bad4e.firebaseapp.com",
+
+  projectId: "hackathon-bad4e",
+
+  storageBucket: "hackathon-bad4e.firebasestorage.app",
+
+  messagingSenderId: "776253336136",
+
+  appId: "1:776253336136:web:24f81bb6b357aa7a90067d"
+
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+
+// Example: Writing data to Firebase Realtime Database
+const userId = "user123"; // You can dynamically get user IDs
+set(ref(database, 'users/' + userId), {
+    username: "exampleUser",
+    email: "user@example.com"
+}).then(() => {
+    console.log("Data written to Firebase!");
+}).catch((error) => {
+    console.error("Error writing to Firebase:", error);
+});
+
+
 // Arrays to store posts, events, and discussions
 let posts = [];
 let events = [];
