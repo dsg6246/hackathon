@@ -1,27 +1,58 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, request, jsonify
+import sqlite3
+
 app = Flask(__name__)
 
-# In-memory data storage for events
-events = []
+# Create SQLite database and events table
+def init_db():
+    conn = sqlite3.connect('events.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS events (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            date TEXT NOT NULL,
+            description TEXT NOT NULL
+        )
+    ''')
+    conn.commit()
+    conn.close()
 
-@app.route('/')
-def index():
-    return render_template('index.html', events=events)
+# Initialize the database
+init_db()
 
-@app.route('/post_event', methods=['POST'])
+# Get all events
+@app.route('/events', methods=['GET'])
+def get_events():
+    conn = sqlite3.connect('events.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM events')
+    events = cursor.fetchall()
+    conn.close()
+
+    # Return the events as JSON
+    return jsonify([{
+        'name': event[1],
+        'date': event[2],
+        'description': event[3]
+    } for event in events])
+
+# Post a new event
+@app.route('/events', methods=['POST'])
 def post_event():
-    event_name = request.form['event_name']
-    event_date = request.form['event_date']
-    event_description = request.form['event_description']
+    event_name = request.json.get('name')
+    event_date = request.json.get('date')
+    event_description = request.json.get('description')
 
-    # Add the new event to the events list
-    events.append({
-        'name': event_name,
-        'date': event_date,
-        'description': event_description
-    })
-    
-    return redirect('/')
+    conn = sqlite3.connect('events.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        INSERT INTO events (name, date, description) VALUES (?, ?, ?)
+    ''', (event_name, event_date, event_description))
+    conn.commit()
+    conn.close()
 
-if __name__ == "__main__":
+    return jsonify({'message': 'Event posted successfully'}), 201
+
+if __name__ == '__main__':
     app.run(debug=True)

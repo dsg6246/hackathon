@@ -3,55 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community App</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script> <!-- Add other services you need -->
-    
+    <title>Community Events</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .event { border: 1px solid #ccc; margin-bottom: 10px; padding: 10px; }
+        .event h3 { margin: 0; }
+        .event p { margin: 5px 0; }
+        form input, form textarea { margin-bottom: 10px; width: 100%; padding: 8px; }
+        form button { padding: 10px 15px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+    </style>
 </head>
 <body>
 
-    <header>
-        <h1>Community Connect</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="news/news.html">News</a>
-            <a href="events/events.html">Events</a>
-            <a href="post/post.html">Posts</a>
-            <a href="accountInfo/account.html">Account-Info</a>
-        </nav>
-    </header>
+    <h1>Community Events</h1>
 
-    
+    <!-- Event Post Form -->
+    <h2>Post an Event</h2>
+    <form id="eventForm">
+        <label for="event_name">Event Name:</label><br>
+        <input type="text" id="event_name" name="event_name" required><br><br>
 
-    <section id="events">
-        <h2>Community Events</h2>
-        <div id="event-list">
-            <!-- Events will appear here -->
-        </div>
-        <div class="event-form">
-            <input type="text" id="event-name" placeholder="Event name">
-            <input type="date" id="event-date">
-            <button onclick="addEvent()">Add Event</button>
-        </div>
-    </section>
+        <label for="event_date">Event Date:</label><br>
+        <input type="date" id="event_date" name="event_date" required><br><br>
 
-    <section id="discussions">
-        <h2>Discussions</h2>
-        <div id="discussion-list">
-            <!-- Discussions will appear here -->
-        </div>
-        <div class="discussion-form">
-            <textarea id="new-discussion" placeholder="Start a discussion..."></textarea>
-            <button onclick="addDiscussion()">Start Discussion</button>
-        </div>
-    </section>
+        <label for="event_description">Event Description:</label><br>
+        <textarea id="event_description" name="event_description" required></textarea><br><br>
 
-    <footer>
-        <p>&copy; 2025 Community Connect</p>
-    </footer>
+        <button type="submit">Post Event</button>
+    </form>
 
-    <script src="script.js"></script>
+    <!-- Display Events -->
+    <h2>Upcoming Events</h2>
+    <div id="eventList"></div>
+
+    <script>
+        // Load events from the server and display them
+        function loadEvents() {
+            fetch('http://127.0.0.1:5000/events')
+                .then(response => response.json())
+                .then(events => {
+                    const eventList = document.getElementById('eventList');
+                    eventList.innerHTML = ''; // Clear current list
+                    events.forEach(event => {
+                        const eventElement = document.createElement('div');
+                        eventElement.classList.add('event');
+                        eventElement.innerHTML = `
+                            <h3>${event.name}</h3>
+                            <p><strong>Date:</strong> ${event.date}</p>
+                            <p><strong>Description:</strong> ${event.description}</p>
+                        `;
+                        eventList.appendChild(eventElement);
+                    });
+                });
+        }
+
+        // Handle form submission to add a new event
+        document.getElementById('eventForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission to server
+
+            const eventName = document.getElementById('event_name').value;
+            const eventDate = document.getElementById('event_date').value;
+            const eventDescription = document.getElementById('event_description').value;
+
+            fetch('http://127.0.0.1:5000/events', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: eventName,
+                    date: eventDate,
+                    description: eventDescription
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                loadEvents(); // Reload the event list
+            });
+
+            document.getElementById('eventForm').reset();
+        });
+
+        // Load events when the page loads
+        window.onload = loadEvents;
+    </script>
+
+</body>
 </html>
-<h1>hello</h1>

@@ -18,6 +18,7 @@ const firebaseConfig = {
   appId: "1:776253336136:web:24f81bb6b357aa7a90067d"
 
 };
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
@@ -32,7 +33,8 @@ set(ref(database, 'users/' + userId), {
 }).catch((error) => {
     console.error("Error writing to Firebase:", error);
 });
-
+// ==================================================================
+// ==================================================================
 
 // Arrays to store posts, events, and discussions
 let posts = [];

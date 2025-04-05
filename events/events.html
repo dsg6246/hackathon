@@ -37,7 +37,37 @@
     <div id="eventList"></div>
 
     <script>
-        // Function to handle form submission
+        // Load events from localStorage
+        function loadEvents() {
+            const savedEvents = localStorage.getItem('events');
+            if (savedEvents) {
+                return JSON.parse(savedEvents); // Parse the stored JSON to an array
+            }
+            return []; // Return an empty array if no events are stored
+        }
+
+        // Save events to localStorage
+        function saveEvents(events) {
+            localStorage.setItem('events', JSON.stringify(events)); // Save the events array as a JSON string
+        }
+
+        // Display events on the page
+        function displayEvents(events) {
+            const eventList = document.getElementById('eventList');
+            eventList.innerHTML = ''; // Clear current list
+            events.forEach(event => {
+                const eventElement = document.createElement('div');
+                eventElement.classList.add('event');
+                eventElement.innerHTML = `
+                    <h3>${event.name}</h3>
+                    <p><strong>Date:</strong> ${event.date}</p>
+                    <p><strong>Description:</strong> ${event.description}</p>
+                `;
+                eventList.appendChild(eventElement);
+            });
+        }
+
+        // Handle form submission to add a new event
         document.getElementById('eventForm').addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent form submission to server
 
@@ -46,21 +76,31 @@
             const eventDate = document.getElementById('event_date').value;
             const eventDescription = document.getElementById('event_description').value;
 
-            // Create a new event element
-            const eventElement = document.createElement('div');
-            eventElement.classList.add('event');
-            eventElement.innerHTML = `
-                <h3>${eventName}</h3>
-                <p><strong>Date:</strong> ${eventDate}</p>
-                <p><strong>Description:</strong> ${eventDescription}</p>
-            `;
+            // Get existing events from localStorage
+            const events = loadEvents();
 
-            // Append the new event to the event list
-            document.getElementById('eventList').appendChild(eventElement);
+            // Add the new event
+            events.push({
+                name: eventName,
+                date: eventDate,
+                description: eventDescription
+            });
+
+            // Save updated events to localStorage
+            saveEvents(events);
+
+            // Display the updated list of events
+            displayEvents(events);
 
             // Clear the form inputs
             document.getElementById('eventForm').reset();
         });
+
+        // Load and display events when the page loads
+        window.onload = function() {
+            const events = loadEvents();
+            displayEvents(events);
+        }
     </script>
 
 </body>
