@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        
         .images {
             display: flex;
             align-items: center; /* Vertically center the items */
@@ -48,6 +49,33 @@
             color: #FAF5EE;
             text-decoration: none;
         }
+        
+        .Hackathon{
+            background-color: black;
+            color: gold;
+            margin: 2px;
+            padding: 20px;
+        }
+        #secretDiv {
+          display: none;
+         
+        }
+        /*
+        .Hackathon h3{
+            text-align: left;
+            justify-content: left;
+            padding-left: 5px;
+        }
+        .Hackathon h2{
+            text-align: left;
+            justify-content: left;
+        }
+        .Hackathon h1{
+            text-align: left;
+            justify-content: left;
+            font-size: ;
+        }
+        */
     </style>
 </head>
 <body>
@@ -64,10 +92,13 @@
             
             <nav>
                 <a href="../main/index.html" class="a">Home</a>
-                <a href="../news/news.html" class="a">News</a>
-                <a href="../events/events.html" class="a">Events</a>
+                <a href="../events1/events.html" class="a">Events</a>
                 <a href="../post/post.html" class="a">Posts</a>
                 <a href="../accountInfo/account.html" class="a">Account-Info</a>
+                <div class="darkModeToggle theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </div>
             </nav>
         </div>
     </header>
@@ -86,13 +117,25 @@
 
         <button type="submit">Post Event</button>
     </form>
-
+    
     <!-- Display Events -->
     <h2>Upcoming Events</h2>
+    <div class="Hackathon" style="margin: 2px;" id="secretDiv">
+        <h4 style="margin: 1px;" id="secretDiv">Hackathon</h4>
+        <div style="display: inline-block; font-size: 0; margin: 0px;"id="secretDiv" > <!-- Set font-size to 0 to eliminate space between inline-block elements -->
+            <h4 style="display: inline-block; font-size: 16px; margin: 0px;"id="secretDiv">Date:</h4> <!-- Reset font-size for text -->
+            <p style="display: inline-block; font-size: 16px; margin: 0px;"id="secretDiv">2025-04-05</p>
+        </div>
+        <br>
+        <div style="display: inline-block; font-size: 0; margin: 0px;"id="secretDiv"> <!-- Set font-size to 0 here as well -->
+            <h4 style="display: inline-block; font-size: 16px; margin: 0px;"id="secretDiv">Description:</h4> <!-- Reset font-size -->
+            <p style="display: inline-block; font-size: 16px; margin: 0px;"id="secretDiv">BT Hackathon!!!</p>
+        </div>
+    </div>
     <div id="eventList"></div>
 
     <div id="calendar"></div>
-
+    
     <script>
         document.addEventListener('DOMContentLoaded', () => {
     // Check if dark mode is enabled in localStorage and apply it

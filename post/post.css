@@ -189,3 +189,35 @@ header h1 {
     margin-bottom: 20px; /* Add space at the bottom to avoid overlap with footer */
     padding-top: 1.5em;
 }
+
+
+
+/* Default Light Mode Styles */
+body {
+    background-color: white;
+    color: black;
+    font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+header.dark-mode {
+    background-color: #1D503A;
+    color: white;
+}
+
+button.darkModeToggle {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button.darkModeToggle:hover {
+    background-color: #444;
+}

@@ -3,11 +3,13 @@ const correctCode = "BCTS Teterboro";
 function checkCode() {
     const userInput = document.getElementById("codeInput").value;
     const secretDiv = document.getElementById("secretDiv");
+    //const hello = document.getElementById("hello");
     const header = document.querySelector('header'); // Ensure you have a header element
 
     if (userInput === correctCode) {
+        
         secretDiv.style.display = "block";
-
+        //hello.style.display="block";
         // Save the color changes to localStorage
         localStorage.setItem("headerBackgroundColor", "black");
         localStorage.setItem("headerTextColor", "gold");
@@ -21,6 +23,8 @@ function checkCode() {
 }
 
 function resetColors() {
+    secretDiv.style.display = "none";
+    //hello.style.display="none"
     const header = document.querySelector('header');
 
     // Reset the colors to the original ones

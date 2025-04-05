@@ -28,15 +28,14 @@
             display: flex;
             align-items: center; /* Vertically center the items */
             justify-content: center; /* Center all items as a group */
-            gap: 0px; /* Optional: space between image and heading */
-            padding: px;
-
+            gap: 70px; /* Optional: space between image and heading */
         }
 
         .images img {
             height: 60px; /* Set the image size */
             width: auto;
             border-radius: 10px;
+            margin-right: 20px;
         }
 
         .images h1 {
@@ -46,9 +45,11 @@
             flex-grow: 1;
             text-align: center;
             justify-content: center;
+            padding-left: 20px;
         }
-        .images nav{
-            
+        a.no-underline {
+            color: #D3A121;          /* Inherits the color from its parent (or you can set a custom color here) */
+            text-decoration: none;   /* Removes the underline */
         }
 
         
@@ -72,18 +73,17 @@
             
             <nav>
                 <a href="../main/index.html" class="a">Home</a>
-                <a href="../news/news.html" class="a">News</a>
-                <a href="../events/events.html" class="a">Events</a>
+                <a href="../events1/events.html" class="a">Events</a>
                 <a href="../post/post.html" class="a">Posts</a>
                 <a href="../accountInfo/account.html" class="a">Account-Info</a>
-                <button class="darkModeToggle">Dark</button>
+                <div class="darkModeToggle theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </div>
             </nav>
         </div>
         <!-- Replace dark mode button with Font Awesome icons -->
-<div class="theme-toggle" id="theme-toggle">
-    <i class="fas fa-moon"></i>
-    <i class="fas fa-sun"></i>
-</div>
+       
 
     </header>
 
@@ -117,12 +117,7 @@
                 <br>
                 Get the latest updates on school achievements, district-wide initiatives, and important alerts.
             </li>
-            <br>
-            <li>
-                Student Posts & Highlights:
-                <br>
-                See what our students are creating, learning, and sharing. From club activities to class projects, get inspired by student voices.
-            </li>
+
             <br>
             <li>
                 Events Calendar:
@@ -135,15 +130,32 @@
                 <br>
                 Change your Username, Password, and Profile Picture.
             </li>
+            <br>
+            <li>
+                Student Posts & Highlights:
+                <br>
+                Click below to see what our students are creating, learning, and sharing. From club activities to class projects, get inspired by student voices.
+                <br>
+                <button style="text-align: center;margin-left: 200px;margin-top: 10px; color: #D3A121;"><a target="_blank" href="https://knightsnewsblog.wordpress.com/" class="no-underline">Click Here</a></button>
+            </li>
+            <li>
+                Testing Calendar:
+                <br>
+                Click below to see upcoming tests and assignment due dates.
+                <button style="text-align: center;margin-left: 200px;margin-top: 10px; color: #D3A121;"><a target="_blank" href="https://calendar.google.com/calendar/u/0/embed?src=c_fskqdas4ki215ie9dl99d9ksl0@group.calendar.google.com&ctz=America/New_York" class="no-underline">Click Here</a></button>
+            </li>
+
+            
         </ul>
 
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    // Check if dark mode is enabled in localStorage and apply it
+    document.addEventListener('DOMContentLoaded', () => {
+    // Check if dark mode is enabled in localStorage and apply it on page load
     if (localStorage.getItem('darkMode') === 'enabled') {
         document.body.classList.add('dark-mode');
+        // If you have other elements that need to follow dark mode like header, you can add them too
         document.querySelector('header').classList.add('dark-mode');
     }
 
@@ -163,6 +175,7 @@
         });
     }
 });
+
     </script>
 
     <!--
