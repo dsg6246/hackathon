@@ -2,10 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Alegreya Sans SC', sans-serif;
+
 }
 
 body {
-    font-family: Arial, sans-serif;
     height: 100vh; /* Full viewport height */
     width: 100vw; /* Full viewport width */
     display: flex;
@@ -102,6 +103,7 @@ nav a:active {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #send-btn:hover {
@@ -116,6 +118,7 @@ nav a:active {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #send-image-btn:hover {
