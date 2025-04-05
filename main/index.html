@@ -5,7 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community App</title>
     <link rel="stylesheet" href="style.css">
-    
+    <style>
+        #secretDiv {
+          display: none;
+          margin-top: 20px;
+          padding: 20px;
+          background-color: #d4edda;
+          color: #155724;
+          border: 1px solid #c3e6cb;
+          border-radius: 5px;
+        }
+        .color{
+            color: #155724;
+        }
+        #codeInput{
+            padding-left: 10px;
+            width: 570px;
+        }
+        
+      </style>
 </head>
 <body>
 
@@ -34,7 +52,66 @@
         <h2>About This Application</h2>
         <p>This is a simple chat application that allows users to log in, send messages, and see their previous chats. The application is built with a Node.js backend, MongoDB for data storage, and a frontend using HTML, CSS, and JavaScript.</p>
     </div>
+    <div class="description-box">
+        <h2>Enter the district code:</h2>
+        <input type="text" id="codeInput" placeholder="Enter code">
+        <button onclick="checkCode()">Submit</button>
+    </div>
+    <div class="description-box" id="secretDiv">
+        <h2>About Bergen County Technical Schools</h2>
+        <h3>Welcome to Bergen County Technical High School</h5>
+        <h4>Empowering Tomorrow's Innovators - Today</h6>
+        <p class="color" style="color: black;">Bergen County Technical High School is a leading institution offering rigorous academics, cutting-edge career and technical education, and a vibrant student life—all designed to prepare students for college, careers, and beyond. Our school provides diverse pathways in STEM, health sciences, visual arts, business, and more. Whether you're a prospective student, parent, or current member of our school community, this is your hub for everything Bergen Tech.</p>
+        <ul style="color: black;">
+            
+            <li>News & Announcements:
+                <br>
+                Get the latest updates on school achievements, district-wide initiatives, and important alerts.
+            </li>
+            <br>
+            <li>
+                Student Posts & Highlights:
+                <br>
+                See what our students are creating, learning, and sharing. From club activities to class projects, get inspired by student voices.
+            </li>
+            <br>
+            <li>
+                Events Calendar:
+                <br>
+                Never miss out! Stay informed about upcoming events, important dates, and community programs.
+            </li>
+            <br>
+            <li>
+                My Account:
+                <br>
+                Change your Username, Password, and Profile Picture.
+            </li>
+        </ul>
 
+
+
+
+
+
+
+
+       
+        
+    </div>
+    <script>
+        const correctCode = "BCTS Teterboro";
+
+        function checkCode() {
+        const userInput = document.getElementById("codeInput").value;
+        const secretDiv = document.getElementById("secretDiv");
+
+        if (userInput === correctCode) {
+            secretDiv.style.display = "block";
+        } else {
+            alert("Incorrect code. Try again.");
+        }
+        }
+    </script>
 </body>
 </html>
     

@@ -6,8 +6,8 @@ body {
 }
 
 header {
-    background-color: #278783;
-    color: #FFEBD0;
+    background-color: #1D503A;
+    color: #FAF5EE;
     padding: 20px;
     text-align: center;
 }
@@ -21,7 +21,7 @@ nav {
 }
 
 nav a {
-    color: #FFEBD0;
+    color: #FAF5EE;
     text-decoration: none;
     padding: 10px 15px;
     font-weight: bold;
@@ -32,10 +32,10 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #1f6a6d;
+    background-color: #123527;
     color: white;
 }
 
 nav a:active {
-    background-color: #1f6a6d;
+    background-color: #1D503A;
 }
