@@ -172,6 +172,10 @@ header h1 {
     margin-bottom: 10px;
 }
 
+form {
+    
+}
+
 /* Chat Container */
 .chat-container {
     display: flex;
@@ -202,7 +206,6 @@ body {
 /* Dark Mode Styles */
 body.dark-mode {
     background-color: #121212;
-    color: white;
 }
 
 header.dark-mode {

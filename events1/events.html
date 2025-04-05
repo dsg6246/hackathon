@@ -104,7 +104,7 @@
     </header>
 
     <!-- Event Post Form -->
-    <h2>Post an Event</h2>
+    <h2 >Post an Event</h2>
     <form id="eventForm">
         <label for="event_name">Event Name:</label><br>
         <input type="text" id="event_name" name="event_name" required><br><br>
@@ -147,10 +147,10 @@
     // Dark mode toggle button
     const darkModeToggle = document.querySelector('.darkModeToggle');
     if (darkModeToggle) {
+        
         darkModeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
             document.querySelector('header').classList.toggle('dark-mode');
-
             // Store the user's dark mode preference
             if (document.body.classList.contains('dark-mode')) {
                 localStorage.setItem('darkMode', 'enabled');
