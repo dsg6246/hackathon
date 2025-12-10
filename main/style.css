@@ -15,20 +15,24 @@ body.dark-mode {
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     background-color: #1D503A;
     color: #FAF5EE;
     padding: 20px;
     text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
     word-spacing: 5px;
-    position: relative;
+    padding-bottom: 25px;
 }
+
 header h1 {
     font-size: 2rem;
     margin-bottom: 10px;
-  }
+}
   
   header nav a {
     margin: 0 15px;
@@ -173,9 +177,11 @@ nav a:active {
     max-width: 600px;          /* Max width for the box */
     margin: 20px auto;         /* Center the box horizontally */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-top: 30px;
 }
 
 .description-box h2 {
+    padding-top: 70px;
     font-size: 24px;           /* Bigger font size for the heading */
     color: #333;               /* Dark color for the heading */
 }
@@ -183,38 +189,8 @@ nav a:active {
 .description-box p {
     font-size: 16px;           /* Normal font size for the paragraph */
     color: #555;               /* Lighter color for the paragraph */
-    line-height: 1.6;          /* Increased line height for readability */
+    line-height: 1.6;  
 }
-
-.description-box {
-    background-color: #f9f9f9; /* Light background color */
-    border: 1px solid #ddd;    /* Light border */
-    border-radius: 10px;       /* Rounded corners */
-    padding: 20px;             /* Inner padding */
-    max-width: 600px;          /* Max width for the box */
-    margin: 20px auto;         /* Center the box horizontally */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-.description-box h2 {
-    font-size: 24px;           /* Bigger font size for the heading */
-    color: #333;               /* Dark color for the heading */
-}
-
-.description-box p {
-    font-size: 16px;           /* Normal font size for the paragraph */
-    color: #555;               /* Lighter color for the paragraph */
-    line-height: 1.6;          /* Increased line height for readability */
-}
-
-
-
-
-
-
-
-
-
 
 
 .theme-toggle {
@@ -236,25 +212,4 @@ nav a:active {
 .theme-toggle i {
     font-size: 24px;
     color: #333;
-}
-
-body.dark-mode .theme-toggle {
-    background-color: #333; /* Dark background for the toggle in dark mode */
-}
-
-body.dark-mode .fa-moon {
-    display: none; /* Hide the moon icon when dark mode is active */
-}
-
-body.dark-mode .fa-sun {
-    display: inline-block; /* Show the sun icon in dark mode */
-    color: white;
-}
-
-body:not(.dark-mode) .fa-moon {
-    display: inline-block; /* Show the moon icon in light mode */
-}
-
-body:not(.dark-mode) .fa-sun {
-    display: none; /* Hide the sun icon in light mode */
 }

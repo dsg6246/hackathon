@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Events</title>
+    <title>Community Resources</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -92,8 +92,8 @@
             
             <nav>
                 <a href="../main/index.html" class="a">Home</a>
-                <a href="../events1/events.html" class="a">Events</a>
-                <a href="../post/post.html" class="a">Posts</a>
+                <a href="../events1/events.html" class="a">Resources</a>
+                <!-- <a href="../post/post.html" class="a">Posts</a> -->
                 <a href="../accountInfo/account.html" class="a">Account-Info</a>
                 <div class="darkModeToggle theme-toggle" id="theme-toggle">
                     <i class="fas fa-moon"></i>
@@ -104,26 +104,29 @@
     </header>
 
     <!-- Event Post Form -->
-    <h2 style="color: #287855;">Post an Event</h2>
+    <h2 style="color: #287855;">Post a Resource</h2>
     <form id="eventForm" style="border-radius: 25px;">
-        <label for="event_name">Event Name:</label><br>
+        <label for="event_name">Resource Name:</label><br>
         <input type="text" id="event_name" name="event_name" required><br><br>
 
-        <label for="event_date">Event Date:</label><br>
-        <input type="date" id="event_date" name="event_date" required><br><br>
+        <label for="resource_link">Resource Link:</label><br>
+        <input type="text" id="resource_link" name="resource_link" required><br><br> 
 
-        <label for="event_description">Event Description:</label><br>
+        <!-- <label for="event_date">Resouce Link:</label><br >
+        <input type="date" id="event_date" name="event_date" required><br><br> -->
+
+        <label for="event_description">Resource Description:</label><br>
         <textarea id="event_description" name="event_description" required></textarea><br><br>
 
-        <button type="submit">Post Event</button>
+        <button type="submit">Post Resource</button>
     </form>
     
     <!-- Display Events -->
-    <h2>Upcoming Events</h2>
+    <h2>Resources:</h2>
     <div class="Hackathon" style="margin: 2px;" id="secretDiv">
         <h4 style="margin: 1px;" id="secretDiv">Hackathon</h4>
         <div style="display: inline-block; font-size: 0; margin: 0px;"id="secretDiv" > <!-- Set font-size to 0 to eliminate space between inline-block elements -->
-            <h4 style="display: inline-block; font-size: 16px; margin: 0px;"id="secretDiv">Date:</h4> <!-- Reset font-size for text -->
+            <h4 style="display: inline-block; font-size: 16px; margin: 0px;"id="secretDiv">Resource:</h4> <!-- Reset font-size for text -->
             <p style="display: inline-block; font-size: 16px; margin: 0px;"id="secretDiv">2025-04-05</p>
         </div>
         <br>

@@ -200,25 +200,3 @@ body {
     color: black;
     font-family: 'Alegreya Sans SC', sans-serif;
 }
-
-/* Dark Mode Styles */
-body.dark-mode {
-    background-color: #121212;
-}
-
-header.dark-mode {
-    background-color: #1D503A;
-    color: white;
-}
-
-button.darkModeToggle {
-    background-color: #333;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-button.darkModeToggle:hover {
-    background-color: #444;
-}
