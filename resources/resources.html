@@ -6,30 +6,37 @@
     <title>Community Resources</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        
+   <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alegreya Sans SC', sans-serif;
+            background-color: #FAF5EE;
+            color: #333;
+        }
+
         .images {
             display: flex;
-            align-items: center; /* Vertically center the items */
-            justify-content: center; /* Center all items as a group */
-            gap: 0px; /* Optional: space between image and heading */
-            padding: px;
-
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
         }
 
         .images img {
-            height: 60px; /* Set the image size */
+            height: 60px;
             width: auto;
             border-radius: 10px;
         }
 
         .images h1 {
-
-            padding-right: 100px;
             margin: 0;
             flex-grow: 1;
             text-align: center;
-            justify-content: center;
         }
 
         header {
@@ -39,130 +46,475 @@
             text-align: center;
             word-spacing: 5px;
         }
+
         header h1 {
             font-size: 2rem;
             margin-bottom: 10px;
         }
         
+        header nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
         header nav a {
-            margin: 0 15px;
             color: #FAF5EE;
             text-decoration: none;
+            transition: opacity 0.3s;
         }
-        
-        .Hackathon{
-            background-color: black;
-            color: gold;
-            margin: 2px;
+
+        header nav a:hover {
+            opacity: 0.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
         }
-        #secretDiv {
-          display: none;
-         
+
+        h2 {
+            color: #287855;
+            margin: 30px 0 20px 0;
+            text-align: center;
         }
-        /*
-        .Hackathon h3{
-            text-align: left;
-            justify-content: left;
-            padding-left: 5px;
+
+        /* Form Styles */
+        #eventForm {
+            background: white;
+            padding: 30px;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
         }
-        .Hackathon h2{
-            text-align: left;
-            justify-content: left;
+
+        #eventForm label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #1D503A;
         }
-        .Hackathon h1{
-            text-align: left;
-            justify-content: left;
-            font-size: ;
+
+        #eventForm input, #eventForm textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-family: inherit;
+            font-size: 1rem;
         }
-        */
+
+        #eventForm textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            background-color: #1D503A;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #287855;
+        }
+
+        /* Search Bar */
+        .search-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        #searchInput {
+            width: 100%;
+            max-width: 600px;
+            padding: 15px 20px;
+            border: 2px solid #1D503A;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        #searchInput:focus {
+            outline: none;
+            border-color: #287855;
+            box-shadow: 0 0 10px rgba(40, 120, 85, 0.3);
+        }
+
+        /* Filter Buttons */
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border: 2px solid #1D503A;
+            background: white;
+            color: #1D503A;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active {
+            background: #1D503A;
+            color: white;
+        }
+
+        /* Resource Cards */
+        #eventList {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .resource-card h3 {
+            color: #1D503A;
+            margin-bottom: 10px;
+        }
+
+        .resource-card .resource-link {
+            color: #287855;
+            text-decoration: none;
+            word-break: break-all;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .resource-card .resource-link:hover {
+            text-decoration: underline;
+        }
+
+        .resource-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            grid-column: 1 / -1;
+        }
+
+        /* Featured Resources */
+        .featured-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #1D503A 0%, #287855 100%);
+            border-radius: 15px;
+        }
+
+        .featured-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #FFD700;
+            color: #1D503A;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        }
+
+        .featured-card h3 {
+            color: #1D503A;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+        }
+
+        .featured-card .resource-link {
+            color: #287855;
+            font-weight: 500;
+        }
+
+        .featured-card p {
+            color: #555;
+            margin: 12px 0;
+        }
+
+        /* Feature Button */
+        .feature-btn {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #1D503A;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .feature-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
+        }
+
+        .feature-btn.featured {
+            background: #ccc;
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .feature-btn.featured:hover {
+            transform: none;
+            box-shadow: none;
+        }
     </style>
 </head>
 <body>
 
     <header id="header">
-        
         <div class="images">
-            
             <a href="../main/index.html">
-                <img src="../img/IMG_4967.jpg" alt="Community Connect" >
-              </a>            
-              <h1>Community Connect</h1>
-            
+                <img src="../img/IMG_4967.jpg" alt="Community Connect">
+            </a>            
+            <h1>Community Connect</h1>
             
             <nav>
                 <a href="../main/index.html" class="a">Home</a>
                 <a href="../events1/events.html" class="a">Resources</a>
-                <!-- <a href="../post/post.html" class="a">Posts</a> -->
                 <a href="../accountInfo/account.html" class="a">Account-Info</a>
-                <div class="darkModeToggle theme-toggle" id="theme-toggle">
-                    <i class="fas fa-moon"></i>
-                    <i class="fas fa-sun"></i>
-                </div>
             </nav>
         </div>
     </header>
 
-    <!-- Event Post Form -->
-    <h2 style="color: #287855;">Post a Resource</h2>
-    <form id="eventForm" style="border-radius: 25px;">
-        <label for="event_name">Resource Name:</label><br>
-        <input type="text" id="event_name" name="event_name" required><br><br>
+    <div class="container">
+        <h2 style="color: #287855;">Post a Resource</h2>
+        <form id="eventForm" style="border-radius: 25px;">
+            <label for="event_name">Resource Name:</label>
+            <input type="text" id="event_name" name="event_name" required>
 
-        <label for="resource_link">Resource Link:</label><br>
-        <input type="text" id="resource_link" name="resource_link" required><br><br> 
+            <label for="resource_link">Resource Link:</label>
+            <input type="text" id="resource_link" name="resource_link" required placeholder="https://example.com">
 
-        <!-- <label for="event_date">Resouce Link:</label><br >
-        <input type="date" id="event_date" name="event_date" required><br><br> -->
+            <label for="event_description">Resource Description:</label>
+            <textarea id="event_description" name="event_description" required></textarea>
 
-        <label for="event_description">Resource Description:</label><br>
-        <textarea id="event_description" name="event_description" required></textarea><br><br>
+            <button type="submit">Post Resource</button>
+        </form>
 
-        <button type="submit">Post Resource</button>
-    </form>
-    
-    <!-- Display Events -->
-    <h2>Resources:</h2>
-    <div class="Hackathon" style="margin: 2px;" id="secretDiv">
-        <h4 style="margin: 1px;" id="secretDiv">Hackathon</h4>
-        <div style="display: inline-block; font-size: 0; margin: 0px;"id="secretDiv" > <!-- Set font-size to 0 to eliminate space between inline-block elements -->
-            <h4 style="display: inline-block; font-size: 16px; margin: 0px;"id="secretDiv">Resource:</h4> <!-- Reset font-size for text -->
-            <p style="display: inline-block; font-size: 16px; margin: 0px;"id="secretDiv">2025-04-05</p>
+        <h2>Featured Resources</h2>
+        <div id="featuredResources" class="featured-container">
+            <p style="text-align: center; color: #666;">No featured resources yet. Highlight your top 3 resources!</p>
         </div>
-        <br>
-        <div style="display: inline-block; font-size: 0; margin: 0px;"id="secretDiv"> <!-- Set font-size to 0 here as well -->
-            <h4 style="display: inline-block; font-size: 16px; margin: 0px;"id="secretDiv">Description:</h4> <!-- Reset font-size -->
-            <p style="display: inline-block; font-size: 16px; margin: 0px;"id="secretDiv">BT Hackathon!!!</p>
-        </div>
-    </div>
-    <div id="eventList" style="margin-left: 100px; margin-right: 100px; border-radius: 25px;"></div>
 
-    <div id="calendar"></div>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-    // Check if dark mode is enabled in localStorage and apply it
-    if (localStorage.getItem('darkMode') === 'enabled') {
-        document.body.classList.add('dark-mode');
-        document.querySelector('header').classList.add('dark-mode');
-    }
-
-    // Dark mode toggle button
-    const darkModeToggle = document.querySelector('.darkModeToggle');
-    if (darkModeToggle) {
+        <h2>Resource Directory</h2>
         
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            document.querySelector('header').classList.toggle('dark-mode');
-            // Store th`132145644e user's dark mode preference
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('darkMode', 'enabled');
-            } else {
-                localStorage.removeItem('darkMode');
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="🔍 Search resources by name or description...">
+        </div>
+
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">All Resources</button>
+            <button class="filter-btn" data-filter="recent">Recent</button>
+            <button class="filter-btn" data-filter="oldest">Oldest</button>
+        </div>
+
+        <div id="eventList"></div>
+    </div>
+
+    <script>
+        let resources = [];
+        let featuredResources = [];
+
+        // Load resources and featured from memory
+        function loadResources() {
+            const stored = JSON.parse(localStorage.getItem('resources') || '[]');
+            const featured = JSON.parse(localStorage.getItem('featuredResources') || '[]');
+            resources = stored;
+            featuredResources = featured;
+            displayResources(resources);
+            displayFeaturedResources();
+        }
+
+        // Save resources to memory
+        function saveResources() {
+            localStorage.setItem('resources', JSON.stringify(resources));
+            localStorage.setItem('featuredResources', JSON.stringify(featuredResources));
+        }
+
+        // Display featured resources
+        function displayFeaturedResources() {
+            const container = document.getElementById('featuredResources');
+            
+            if (featuredResources.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #FAF5EE; margin: 20px;">No featured resources yet. Highlight your top 3 resources!</p>';
+                return;
             }
+
+            container.innerHTML = featuredResources.map(resource => `
+                <div class="featured-card">
+                    <span class="featured-badge">⭐ Featured</span>
+                    <h3>${escapeHtml(resource.name)}</h3>
+                    <a href="${escapeHtml(resource.link)}" target="_blank" class="resource-link">
+                        ${escapeHtml(resource.link)}
+                    </a>
+                    <p>${escapeHtml(resource.description)}</p>
+                    <small style="opacity: 0.7;">Posted: ${new Date(resource.timestamp).toLocaleDateString()}</small>
+                </div>
+            `).join('');
+        }
+
+        // Toggle featured status
+        function toggleFeatured(resourceId) {
+            const resource = resources.find(r => r.id === resourceId);
+            if (!resource) return;
+
+            const index = featuredResources.findIndex(r => r.id === resourceId);
+            
+            if (index > -1) {
+                // Remove from featured
+                featuredResources.splice(index, 1);
+            } else {
+                // Add to featured (max 3)
+                if (featuredResources.length >= 3) {
+                    alert('You can only feature up to 3 resources. Please unfeature one first.');
+                    return;
+                }
+                featuredResources.push(resource);
+            }
+            
+            saveResources();
+            displayResources(resources);
+            displayFeaturedResources();
+        }
+
+        // Add new resource
+        document.getElementById('eventForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const newResource = {
+                id: Date.now(),
+                name: document.getElementById('event_name').value,
+                link: document.getElementById('resource_link').value,
+                description: document.getElementById('event_description').value,
+                timestamp: new Date().toISOString()
+            };
+            
+            resources.unshift(newResource);
+            saveResources();
+            displayResources(resources);
+            
+            e.target.reset();
+            alert('Resource posted successfully!');
         });
-    }
-});
+
+        // Display resources
+        function displayResources(resourcesToDisplay) {
+            const eventList = document.getElementById('eventList');
+            
+            if (resourcesToDisplay.length === 0) {
+                eventList.innerHTML = '<div class="no-results">No resources found. Be the first to post one!</div>';
+                return;
+            }
+            
+            eventList.innerHTML = resourcesToDisplay.map(resource => {
+                const isFeatured = featuredResources.some(r => r.id === resource.id);
+                return `
+                    <div class="resource-card">
+                        <h3>${escapeHtml(resource.name)}</h3>
+                        <a href="${escapeHtml(resource.link)}" target="_blank" class="resource-link">
+                            ${escapeHtml(resource.link)}
+                        </a>
+                        <p>${escapeHtml(resource.description)}</p>
+                        <small style="opacity: 0.7;">Posted: ${new Date(resource.timestamp).toLocaleDateString()}</small>
+                        <br>
+                        <button class="feature-btn ${isFeatured ? 'featured' : ''}" 
+                                onclick="toggleFeatured(${resource.id})"
+                                ${isFeatured ? 'disabled' : ''}>
+                            ${isFeatured ? '⭐ Featured' : '☆ Feature This'}
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = resources.filter(resource => 
+                resource.name.toLowerCase().includes(searchTerm) ||
+                resource.description.toLowerCase().includes(searchTerm)
+            );
+            displayResources(filtered);
+        });
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                
+                const filter = e.target.dataset.filter;
+                let filtered = [...resources];
+                
+                if (filter === 'recent') {
+                    filtered.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+                } else if (filter === 'oldest') {
+                    filtered.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+                }
+                
+                displayResources(filtered);
+            });
+        });
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Initialize
+        loadResources();
     </script>
     <script src="script.js"></script>
     <script src="../header.js"></script>

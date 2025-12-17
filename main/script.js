@@ -183,3 +183,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if dark mode is enabled in localStorage and apply it
+    if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+        const header = document.querySelector('header');
+        if (header) {
+            header.classList.add('dark-mode');
+        }
+    }
+
+    // Dark mode toggle button functionality
+    const darkModeToggle = document.querySelector('.darkModeToggle');
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            // Toggle dark mode on body
+            document.body.classList.toggle('dark-mode');
+            
+            // Toggle dark mode on header
+            const header = document.querySelector('header');
+            if (header) {
+                header.classList.toggle('dark-mode');
+            }
+            
+            // Store the user's dark mode preference
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                localStorage.removeItem('darkMode');
+            }
+        });
+    }
+});

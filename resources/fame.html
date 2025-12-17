@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources Hall of Fame</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alegreya Sans SC', sans-serif;
+            background-color: #FAF5EE;
+            color: #333;
+        }
+
+        .images {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .images img {
+            height: 60px;
+            width: auto;
+            border-radius: 10px;
+        }
+
+        .images h1 {
+            margin: 0;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        header {
+            background-color: #1D503A;
+            color: #FAF5EE;
+            padding: 20px;
+            text-align: center;
+            word-spacing: 5px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        header nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        header nav a {
+            color: #FAF5EE;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        header nav a:hover {
+            opacity: 0.7;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #1D503A 0%, #287855 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            color: #FAF5EE;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .trophy-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #287855;
+            margin: 30px 0 20px 0;
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        /* Podium Section */
+        .podium-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 20px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .podium-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            position: relative;
+            transition: transform 0.3s;
+            min-width: 280px;
+            max-width: 350px;
+        }
+
+        .podium-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .podium-card.first {
+            order: 2;
+            border: 3px solid #FFD700;
+            min-height: 380px;
+        }
+
+        .podium-card.second {
+            order: 1;
+            border: 3px solid #C0C0C0;
+            min-height: 340px;
+        }
+
+        .podium-card.third {
+            order: 3;
+            border: 3px solid #CD7F32;
+            min-height: 320px;
+        }
+
+        .medal {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        }
+
+        .rank-number {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+        }
+
+        .first .rank-number { color: #FFD700; }
+        .second .rank-number { color: #C0C0C0; }
+        .third .rank-number { color: #CD7F32; }
+
+        .podium-card h3 {
+            color: #1D503A;
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        .podium-card .resource-link {
+            color: #287855;
+            text-decoration: none;
+            word-break: break-all;
+            display: block;
+            margin: 12px 0;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .podium-card .resource-link:hover {
+            text-decoration: underline;
+        }
+
+        .podium-card p {
+            color: #666;
+            line-height: 1.6;
+            margin: 12px 0;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #eee;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1D503A;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Hall of Fame Grid */
+        .hall-of-fame-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .fame-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 5px solid #287855;
+        }
+
+        .fame-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .fame-rank {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #1D503A;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .fame-card h3 {
+            color: #1D503A;
+            margin-bottom: 10px;
+        }
+
+        .fame-card .resource-link {
+            color: #287855;
+            text-decoration: none;
+            word-break: break-all;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .fame-card .resource-link:hover {
+            text-decoration: underline;
+        }
+
+        .fame-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px;
+            color: #666;
+            font-size: 1.2rem;
+            grid-column: 1 / -1;
+        }
+
+        .vote-btn {
+            background: linear-gradient(135deg, #1D503A 0%, #287855 100%);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            margin-top: 10px;
+            transition: all 0.3s;
+        }
+
+        .vote-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(29, 80, 58, 0.4);
+        }
+
+        .vote-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .vote-btn:disabled:hover {
+            transform: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header id="header">
+        <div class="images">
+            <a href="../main/index.html">
+                <img src="../img/IMG_4967.jpg" alt="Community Connect">
+            </a>            
+            <h1>Community Connect</h1>
+            
+            <nav>
+                <a href="../main/index.html" class="a">Home</a>
+                <a href="../resources/resources.html" class="a">Resources</a>
+                <a href="../accountInfo/account.html" class="a">Account-Info</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero-section">
+            <div class="trophy-icon">🏆</div>
+            <h1>Resources Hall of Fame</h1>
+            <p>Celebrating our community's most valued and impactful resources</p>
+        </div>
+
+        <h2>🥇 Top 3 Resources 🥇</h2>
+        <div id="podiumContainer" class="podium-container">
+            <div class="no-results">Loading top resources...</div>
+        </div>
+
+        <h2>⭐ Hall of Fame Members ⭐</h2>
+        <div id="hallOfFameGrid" class="hall-of-fame-grid">
+            <div class="no-results">Loading hall of fame resources...</div>
+        </div>
+    </div>
+
+    <script>
+        let resources = [];
+
+        // Load resources from localStorage
+        function loadResources() {
+            const stored = JSON.parse(localStorage.getItem('resources') || '[]');
+            resources = stored.map(r => ({
+                ...r,
+                votes: r.votes || Math.floor(Math.random() * 100) + 20 // Demo votes
+            }));
+            
+            // Sort by votes
+            resources.sort((a, b) => b.votes - a.votes);
+            
+            displayPodium();
+            displayHallOfFame();
+        }
+
+        // Display top 3 on podium
+        function displayPodium() {
+            const container = document.getElementById('podiumContainer');
+            
+            if (resources.length < 3) {
+                container.innerHTML = '<div class="no-results">Not enough resources yet. Keep posting to fill the podium!</div>';
+                return;
+            }
+
+            const medals = ['🥇', '🥈', '🥉'];
+            const classes = ['first', 'second', 'third'];
+            
+            container.innerHTML = resources.slice(0, 3).map((resource, index) => `
+                <div class="podium-card ${classes[index]}">
+                    <div class="medal">${medals[index]}</div>
+                    <div class="rank-number">#${index + 1}</div>
+                    <h3>${escapeHtml(resource.name)}</h3>
+                    <a href="${escapeHtml(resource.link)}" target="_blank" class="resource-link">
+                        ${escapeHtml(resource.link)}
+                    </a>
+                    <p>${escapeHtml(resource.description)}</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-value">${resource.votes}</div>
+                            <div class="stat-label">Votes</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">${new Date(resource.timestamp).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}</div>
+                            <div class="stat-label">Posted</div>
+                        </div>
+                    </div>
+                    <button class="vote-btn" onclick="voteResource(${resource.id})">👍 Vote</button>
+                </div>
+            `).join('');
+        }
+
+        // Display remaining hall of fame resources
+        function displayHallOfFame() {
+            const container = document.getElementById('hallOfFameGrid');
+            
+            if (resources.length <= 3) {
+                container.innerHTML = '<div class="no-results">More great resources coming soon!</div>';
+                return;
+            }
+
+            container.innerHTML = resources.slice(3).map((resource, index) => `
+                <div class="fame-card">
+                    <span class="fame-rank">#${index + 4}</span>
+                    <h3>${escapeHtml(resource.name)}</h3>
+                    <a href="${escapeHtml(resource.link)}" target="_blank" class="resource-link">
+                        ${escapeHtml(resource.link)}
+                    </a>
+                    <p>${escapeHtml(resource.description)}</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-value">${resource.votes}</div>
+                            <div class="stat-label">Votes</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">${new Date(resource.timestamp).toLocaleDateString('en-US', { month: 'short' })}</div>
+                            <div class="stat-label">Posted</div>
+                        </div>
+                    </div>
+                    <button class="vote-btn" onclick="voteResource(${resource.id})">👍 Vote</button>
+                </div>
+            `).join('');
+        }
+
+        // Vote for a resource
+        function voteResource(resourceId) {
+            const resource = resources.find(r => r.id === resourceId);
+            if (!resource) return;
+
+            resource.votes = (resource.votes || 0) + 1;
+            
+            // Update in localStorage
+            const storedResources = JSON.parse(localStorage.getItem('resources') || '[]');
+            const index = storedResources.findIndex(r => r.id === resourceId);
+            if (index > -1) {
+                storedResources[index].votes = resource.votes;
+                localStorage.setItem('resources', JSON.stringify(storedResources));
+            }
+
+            // Re-sort and display
+            resources.sort((a, b) => b.votes - a.votes);
+            displayPodium();
+            displayHallOfFame();
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Initialize
+        loadResources();
+    </script>
+</body>
+</html>
