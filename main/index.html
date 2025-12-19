@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;600&display=swap"
+        rel="stylesheet">
 
     <style>
         * {
@@ -52,7 +54,7 @@
             font-size: 2rem;
             margin-bottom: 10px;
         }
-        
+
         header nav {
             display: flex;
             align-items: center;
@@ -72,11 +74,11 @@
 
         .description-box {
             max-width: 800px;
-            margin: 150px auto 0 auto;
+            margin: 50px auto;
             padding: 40px;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
         }
 
@@ -92,30 +94,118 @@
             line-height: 1.8;
         }
 
-        #secretDiv {
-            display: none;
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-            border-radius: 5px;
+        .news-section {
+            max-width: 1000px;
+            margin: 0 auto 60px auto;
+            padding: 0 20px;
         }
 
-        .color {
-            color: #155724;
+        .news-section h2 {
+            color: #1D503A;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
         }
 
-        #codeInput {
-            padding: 10px;
-            padding-left: 10px;
-            width: 100%;
-            max-width: 570px;
-            border: 2px solid #1D503A;
-            border-radius: 8px;
-            font-family: inherit;
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-date {
+            color: #1D503A;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .news-card h3 {
+            color: #1D503A;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        .news-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .read-more {
+            color: #1D503A;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .read-more:hover {
+            color: #287855;
+        }
+
+        .contact-section {
+            background-color: #1D503A;
+            color: #FAF5EE;
+            padding: 50px 20px;
+            margin-top: 60px;
+        }
+
+        .contact-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-section h2 {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-box {
+            text-align: center;
+        }
+
+        .contact-box i {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #D3A121;
+        }
+
+        .contact-box h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .contact-box p {
             font-size: 1rem;
-            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .contact-box a {
+            color: #D3A121;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .contact-box a:hover {
+            opacity: 0.7;
         }
 
         button {
@@ -142,15 +232,16 @@
         }
     </style>
 </head>
+
 <body>
 
     <header id="header">
         <div class="images">
             <a href="../main/index.html">
                 <img src="../img/IMG_4967.jpg" alt="Community Connect">
-            </a>            
+            </a>
             <h1>Community Connect</h1>
-            
+
             <nav>
                 <a href="../main/index.html" class="a">Home</a>
                 <a href="../resources/resources.html" class="a">Resources</a>
@@ -162,10 +253,60 @@
     <!-- Description Box Section -->
     <div class="description-box">
         <h2>About This Application</h2>
-        <p>This is a website that will serve as a community resource hub to highlight resources available to residents within the community</p>
+        <p>This is a website that will serve as a community resource hub to highlight resources available to residents
+            within the community</p>
     </div>
 
-    
+    <!-- Recent News Section -->
+    <div class="news-section">
+        <h2>Recent News & Updates</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <div class="news-date"><i class="fas fa-calendar-alt"></i> December 15, 2024</div>
+                <h3>New Housing Assistance Program Launched</h3>
+                <p>Our community has launched a new housing assistance program to help families in need. Applications are now open for eligible residents.</p>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date"><i class="fas fa-calendar-alt"></i> December 12, 2024</div>
+                <h3>Community Health Fair This Weekend</h3>
+                <p>Join us for free health screenings, wellness workshops, and family activities. Saturday from 9 AM to 3 PM at the Community Center.</p>
+            </div>
+
+            <div class="news-card">
+                <div class="news-date"><i class="fas fa-calendar-alt"></i> December 10, 2024</div>
+                <h3>Job Training Workshop Series Announced</h3>
+                <p>Free job training workshops starting next month covering resume writing, interview skills, and career development opportunities.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <footer class="contact-section">
+        <div class="contact-content">
+            <h2>Get In Touch</h2>
+            
+            <div class="contact-box">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>Visit Us</h3>
+                <p>123 Community Drive<br>Hackensack, NY 123456</p>
+            </div>
+
+            <div class="contact-box">
+                <i class="fas fa-phone"></i>
+                <h3>Call Us</h3>
+                <p><a href="tel:+15551234567">(555) 123-4567</a><br>Mon-Fri: 9 AM - 5 PM</p>
+            </div>
+
+            <div class="contact-box">
+                <i class="fas fa-envelope"></i>
+                <h3>Email Us</h3>
+                <p><a href="mailto:info@communityconnect.org">info@communityconnect.org</a><br>We respond within 24 hours</p>
+            </div>
+        </div>
+    </footer>
+
     <script src="../header.js"></script>
 </body>
+
 </html>

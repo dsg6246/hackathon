@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Resources</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
-   <style>
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -19,55 +20,6 @@
             color: #333;
         }
 
-        .images {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            padding: 10px;
-        }
-
-        .images img {
-            height: 60px;
-            width: auto;
-            border-radius: 10px;
-        }
-
-        .images h1 {
-            margin: 0;
-            flex-grow: 1;
-            text-align: center;
-        }
-
-        header {
-            background-color: #1D503A;
-            color: #FAF5EE;
-            padding: 20px;
-            text-align: center;
-            word-spacing: 5px;
-        }
-
-        header h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        
-        header nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        header nav a {
-            color: #FAF5EE;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        header nav a:hover {
-            opacity: 0.7;
-        }
 
         .container {
             max-width: 1200px;
@@ -76,7 +28,7 @@
         }
 
         h2 {
-            color: #287855;
+            color: #1D503A;
             margin: 30px 0 20px 0;
             text-align: center;
         }
@@ -86,7 +38,7 @@
             background: white;
             padding: 30px;
             border-radius: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             margin-bottom: 40px;
         }
 
@@ -97,7 +49,8 @@
             color: #1D503A;
         }
 
-        #eventForm input, #eventForm textarea {
+        #eventForm input,
+        #eventForm textarea {
             width: 100%;
             padding: 12px;
             border: 2px solid #ddd;
@@ -187,13 +140,13 @@
             background: white;
             border-radius: 15px;
             padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .resource-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .resource-card h3 {
@@ -240,7 +193,7 @@
             background: white;
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
             position: relative;
             transition: transform 0.3s;
         }
@@ -259,7 +212,7 @@
             border-radius: 20px;
             font-weight: bold;
             font-size: 0.85rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
 
         .featured-card h3 {
@@ -298,36 +251,143 @@
         }
 
         .feature-btn.featured {
-            background: #ccc;
-            color: #666;
-            cursor: not-allowed;
+            background: linear-gradient(135deg, #6c757d 0%, #5a6268 100%);
+            color: white;
         }
 
         .feature-btn.featured:hover {
-            transform: none;
-            box-shadow: none;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(108, 117, 125, 0.4);
+        }
+
+        /* Delete Button */
+        .delete-btn {
+            background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-left: 5px;
+            transition: all 0.3s;
+        }
+
+        .delete-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alegreya Sans SC', sans-serif;
+            background-color: #FAF5EE;
+            color: #333;
+        }
+
+
+        .images {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .images img {
+            height: 60px;
+            width: auto;
+            border-radius: 10px;
+        }
+
+        .images h1 {
+            margin: 0;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        header {
+            background-color: #1D503A;
+            color: #FAF5EE;
+            padding: 20px;
+            text-align: center;
+            word-spacing: 5px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        header nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        header nav a {
+            color: #FAF5EE;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        header nav a:hover {
+            opacity: 0.7;
+        }
+
+        .color {
+            color: #155724;
+        }
+
+
+
+        button {
+            background-color: #1D503A;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 5px;
+            transition: background-color 0.3s;
+            font-family: inherit;
+        }
+
+        button:hover {
+            background-color: #287855;
         }
     </style>
 </head>
+
 <body>
 
     <header id="header">
         <div class="images">
             <a href="../main/index.html">
                 <img src="../img/IMG_4967.jpg" alt="Community Connect">
-            </a>            
+            </a>
             <h1>Community Connect</h1>
-            
+
             <nav>
                 <a href="../main/index.html" class="a">Home</a>
-                <a href="../events1/events.html" class="a">Resources</a>
+                <a href="../resources/resources.html" class="a">Resources</a>
                 <a href="../accountInfo/account.html" class="a">Account-Info</a>
             </nav>
         </div>
     </header>
 
     <div class="container">
-        <h2 style="color: #287855;">Post a Resource</h2>
+        <h2 style="color: #1D503A;">Post a Resource</h2>
         <form id="eventForm" style="border-radius: 25px;">
             <label for="event_name">Resource Name:</label>
             <input type="text" id="event_name" name="event_name" required>
@@ -347,7 +407,7 @@
         </div>
 
         <h2>Resource Directory</h2>
-        
+
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="🔍 Search resources by name or description...">
         </div>
@@ -384,7 +444,7 @@
         // Display featured resources
         function displayFeaturedResources() {
             const container = document.getElementById('featuredResources');
-            
+
             if (featuredResources.length === 0) {
                 container.innerHTML = '<p style="text-align: center; color: #FAF5EE; margin: 20px;">No featured resources yet. Highlight your top 3 resources!</p>';
                 return;
@@ -399,6 +459,13 @@
                     </a>
                     <p>${escapeHtml(resource.description)}</p>
                     <small style="opacity: 0.7;">Posted: ${new Date(resource.timestamp).toLocaleDateString()}</small>
+                    <br>
+                    <button class="feature-btn featured" onclick="toggleFeatured(${resource.id})">
+                        ✕ Unfeature
+                    </button>
+                    <button class="delete-btn" onclick="deleteResource(${resource.id})">
+                        🗑️ Delete
+                    </button>
                 </div>
             `).join('');
         }
@@ -409,10 +476,11 @@
             if (!resource) return;
 
             const index = featuredResources.findIndex(r => r.id === resourceId);
-            
+
             if (index > -1) {
                 // Remove from featured
                 featuredResources.splice(index, 1);
+                alert('Resource unfeatured successfully!');
             } else {
                 // Add to featured (max 3)
                 if (featuredResources.length >= 3) {
@@ -420,17 +488,36 @@
                     return;
                 }
                 featuredResources.push(resource);
+                alert('Resource featured successfully!');
             }
-            
+
             saveResources();
             displayResources(resources);
             displayFeaturedResources();
         }
 
+        // Delete resource
+        function deleteResource(resourceId) {
+            if (!confirm('Are you sure you want to delete this resource? This action cannot be undone.')) {
+                return;
+            }
+
+            // Remove from resources
+            resources = resources.filter(r => r.id !== resourceId);
+
+            // Remove from featured if it was featured
+            featuredResources = featuredResources.filter(r => r.id !== resourceId);
+
+            saveResources();
+            displayResources(resources);
+            displayFeaturedResources();
+            alert('Resource deleted successfully!');
+        }
+
         // Add new resource
         document.getElementById('eventForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            
+
             const newResource = {
                 id: Date.now(),
                 name: document.getElementById('event_name').value,
@@ -438,11 +525,11 @@
                 description: document.getElementById('event_description').value,
                 timestamp: new Date().toISOString()
             };
-            
+
             resources.unshift(newResource);
             saveResources();
             displayResources(resources);
-            
+
             e.target.reset();
             alert('Resource posted successfully!');
         });
@@ -450,12 +537,12 @@
         // Display resources
         function displayResources(resourcesToDisplay) {
             const eventList = document.getElementById('eventList');
-            
+
             if (resourcesToDisplay.length === 0) {
                 eventList.innerHTML = '<div class="no-results">No resources found. Be the first to post one!</div>';
                 return;
             }
-            
+
             eventList.innerHTML = resourcesToDisplay.map(resource => {
                 const isFeatured = featuredResources.some(r => r.id === resource.id);
                 return `
@@ -468,9 +555,11 @@
                         <small style="opacity: 0.7;">Posted: ${new Date(resource.timestamp).toLocaleDateString()}</small>
                         <br>
                         <button class="feature-btn ${isFeatured ? 'featured' : ''}" 
-                                onclick="toggleFeatured(${resource.id})"
-                                ${isFeatured ? 'disabled' : ''}>
-                            ${isFeatured ? '⭐ Featured' : '☆ Feature This'}
+                                onclick="toggleFeatured(${resource.id})">
+                            ${isFeatured ? '✕ Unfeature' : '☆ Feature This'}
+                        </button>
+                        <button class="delete-btn" onclick="deleteResource(${resource.id})">
+                            🗑️ Delete
                         </button>
                     </div>
                 `;
@@ -480,7 +569,7 @@
         // Search functionality
         document.getElementById('searchInput').addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
-            const filtered = resources.filter(resource => 
+            const filtered = resources.filter(resource =>
                 resource.name.toLowerCase().includes(searchTerm) ||
                 resource.description.toLowerCase().includes(searchTerm)
             );
@@ -492,16 +581,16 @@
             btn.addEventListener('click', (e) => {
                 document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
                 e.target.classList.add('active');
-                
+
                 const filter = e.target.dataset.filter;
                 let filtered = [...resources];
-                
+
                 if (filter === 'recent') {
                     filtered.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
                 } else if (filter === 'oldest') {
                     filtered.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
                 }
-                
+
                 displayResources(filtered);
             });
         });
@@ -519,4 +608,5 @@
     <script src="script.js"></script>
     <script src="../header.js"></script>
 </body>
+
 </html>

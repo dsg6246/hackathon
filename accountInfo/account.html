@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Information</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alegreya Sans SC', sans-serif;
+            background-color: #FAF5EE;
+            color: #333;
+        }
+
         .images {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0px;
-            padding: px;
+            gap: 20px;
+            padding: 10px;
         }
 
         .images img {
@@ -22,11 +36,9 @@
         }
 
         .images h1 {
-            padding-right: 100px;
             margin: 0;
             flex-grow: 1;
             text-align: center;
-            justify-content: center;
         }
 
         header {
@@ -42,37 +54,148 @@
             margin-bottom: 10px;
         }
 
+        header nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
         header nav a {
-            margin: 0 15px;
             color: #FAF5EE;
             text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        header nav a:hover {
+            opacity: 0.7;
+        }
+
+        .account-info-page {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .account-info-page h2 {
+            color: #1D503A;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .change-username,
+        .change-password,
+        .change-profile-picture {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #FAF5EE;
+            border-radius: 15px;
+        }
+
+        .change-username h3,
+        .change-password h3,
+        .change-profile-picture h3 {
+            color: #1D503A;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #1D503A;
+            margin-top: 15px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        input[type="text"]:disabled {
+            background-color: #e9ecef;
+            cursor: not-allowed;
+        }
+
+        button {
+            background-color: #1D503A;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            font-family: inherit;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #287855;
+        }
+
+        #profile-picture {
+            display: block;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 20px auto;
+            border: 3px solid #1D503A;
+        }
+
+        footer {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+        }
+
+        footer button {
+            min-width: 150px;
+        }
+
+        footer button:first-child {
+            background-color: #6c757d;
+        }
+
+        footer button:first-child:hover {
+            background-color: #5a6268;
         }
     </style>
 </head>
+
 <body>
 
-  <header id="header">
-        
-    <div class="images">
-        
-        <a href="../main/index.html">
-            <img src="../img/IMG_4967.jpg" alt="Community Connect" >
-          </a>            
-          <h1>Community Connect</h1>
-        
-        
-        <nav>
-            <a href="../main/index.html" class="a">Home</a>
-            <a href="../resources/resources.html" class="a">Resources</a>
-            <!-- <a href="../post/post.html" class="a">Posts</a> -->
-            <a href="../accountInfo/account.html" class="a">Account-Info</a>
-            <div class="darkModeToggle theme-toggle" id="theme-toggle">
-                <i class="fas fa-moon"></i>
-                <i class="fas fa-sun"></i>
-            </div>
-        </nav>
-    </div>
-</header>
+    <header id="header">
+        <div class="images">
+            <a href="../main/index.html">
+                <img src="../img/IMG_4967.jpg" alt="Community Connect">
+            </a>
+            <h1>Community Connect</h1>
+
+            <nav>
+                <a href="../main/index.html" class="a">Home</a>
+                <a href="../resources/resources.html" class="a">Resources</a>
+                <a href="../accountInfo/account.html" class="a">Account-Info</a>
+            </nav>
+        </div>
+    </header>
 
     <div class="account-info-page">
         <h2>Account Information</h2>
@@ -104,8 +227,7 @@
         <!-- Change Profile Picture -->
         <div class="change-profile-picture">
             <h3>Change Profile Picture</h3>
-
-            <img id="profile-picture" src="profile.jpg" alt="Current Profile Picture">
+            <img id="profile-picture" src="profile.jpg">
             <input type="file" id="new-profile-picture" accept="image/*">
             <button onclick="uploadProfilePicture()">Upload New Picture</button>
         </div>
@@ -113,36 +235,106 @@
         <footer>
             <button onclick="cancelChanges()">Cancel</button>
             <button onclick="saveChanges()">Save Changes</button>
-            
         </footer>
     </div>
+
     <script>
+        // Load current username from localStorage
         document.addEventListener('DOMContentLoaded', () => {
-    // Check if dark mode is enabled in localStorage and apply it
-    if (localStorage.getItem('darkMode') === 'enabled') {
-        document.body.classList.add('dark-mode');
-        document.querySelector('header').classList.add('dark-mode');
-    }
+            const currentUsername = localStorage.getItem('username') || 'User';
+            document.getElementById('current-username').value = currentUsername;
 
-    // Dark mode toggle button
-    const darkModeToggle = document.querySelector('.darkModeToggle');
-    if (darkModeToggle) {
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            document.querySelector('header').classList.toggle('dark-mode');
-
-            // Store the user's dark mode preference
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('darkMode', 'enabled');
-            } else {
-                localStorage.removeItem('darkMode');
-            }
         });
-    }
-});
+
+        function saveUsername() {
+            const newUsername = document.getElementById('new-username').value;
+            const confirmUsername = document.getElementById('confirm-username').value;
+
+            if (!newUsername || !confirmUsername) {
+                alert('Please fill in all username fields');
+                return;
+            }
+
+            if (newUsername !== confirmUsername) {
+                alert('Usernames do not match!');
+                return;
+            }
+
+            localStorage.setItem('username', newUsername);
+            document.getElementById('current-username').value = newUsername;
+            document.getElementById('new-username').value = '';
+            document.getElementById('confirm-username').value = '';
+            alert('Username updated successfully!');
+        }
+
+        function savePassword() {
+            const currentPassword = document.getElementById('current-password').value;
+            const newPassword = document.getElementById('new-password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            if (!currentPassword || !newPassword || !confirmPassword) {
+                alert('Please fill in all password fields');
+                return;
+            }
+
+            if (newPassword !== confirmPassword) {
+                alert('New passwords do not match!');
+                return;
+            }
+
+            if (newPassword.length < 6) {
+                alert('Password must be at least 6 characters long');
+                return;
+            }
+
+            // In a real app, you'd validate the current password and save the new one securely
+            localStorage.setItem('password', newPassword);
+            document.getElementById('current-password').value = '';
+            document.getElementById('new-password').value = '';
+            document.getElementById('confirm-password').value = '';
+            alert('Password updated successfully!');
+        }
+
+        function uploadProfilePicture() {
+            const fileInput = document.getElementById('new-profile-picture');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                alert('Please select an image file');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                document.getElementById('profile-picture').src = e.target.result;
+                localStorage.setItem('profilePicture', e.target.result);
+                alert('Profile picture updated successfully!');
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function cancelChanges() {
+            document.getElementById('new-username').value = '';
+            document.getElementById('confirm-username').value = '';
+            document.getElementById('current-password').value = '';
+            document.getElementById('new-password').value = '';
+            document.getElementById('confirm-password').value = '';
+            document.getElementById('new-profile-picture').value = '';
+        }
+
+        function saveChanges() {
+            alert('All changes have been saved!');
+        }
+
+        // Load profile picture if stored
+        const storedPicture = localStorage.getItem('profilePicture');
+        if (storedPicture) {
+            document.getElementById('profile-picture').src = storedPicture;
+        }
     </script>
-<script src="script.js"></script>
-<script src="../header.js"></script>
+    <script src="script.js"></script>
+    <script src="../header.js"></script>
 
 </body>
+
 </html>
