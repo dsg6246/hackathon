@@ -18,28 +18,235 @@
             font-family: 'Alegreya Sans SC', sans-serif;
             background-color: #FAF5EE;
             color: #333;
+            overflow-x: hidden;
         }
 
+        .images {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 0px;
+        }
+
+        .images img {
+            height: 80px;
+            width: auto;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .images img:hover {
+            transform: scale(1.05);
+        }
+
+        .images h1 {
+            margin: 0;
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(29, 80, 58, 0.95);
+            backdrop-filter: blur(10px);
+            color: #FAF5EE;
+            padding: 20px;
+            text-align: center;
+            word-spacing: 5px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 12px 20px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header.scrolled .images img {
+            height: 60px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        header nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        header nav a {
+            color: #FAF5EE;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            position: relative;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FAF5EE;
+            transition: width 0.3s;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .background-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1D503A 0%, #287855 50%, #1D503A 100%);
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(250, 245, 238, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            left: 70%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 30%;
+            right: 15%;
+            animation-delay: 4s;
+        }
+
+        .shape:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(30px, -30px) rotate(90deg);
+            }
+            50% {
+                transform: translate(-20px, 20px) rotate(180deg);
+            }
+            75% {
+                transform: translate(20px, 30px) rotate(270deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #FAF5EE;
+            max-width: 900px;
+            padding: 40px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h2 {
+            color: white;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            padding-top: 100px;
+
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         h2 {
             color: #1D503A;
-            margin: 30px 0 20px 0;
+            margin: 40px 0 30px 0;
             text-align: center;
+            font-size: 2rem;
         }
 
-        /* Form Styles */
+        /* Form Styles with Animation */
         #eventForm {
             background: white;
-            padding: 30px;
+            padding: 40px;
             border-radius: 25px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        #eventForm.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         #eventForm label {
@@ -58,6 +265,14 @@
             margin-bottom: 20px;
             font-family: inherit;
             font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        #eventForm input:focus,
+        #eventForm textarea:focus {
+            outline: none;
+            border-color: #1D503A;
+            box-shadow: 0 0 10px rgba(29, 80, 58, 0.2);
         }
 
         #eventForm textarea {
@@ -74,17 +289,28 @@
             cursor: pointer;
             font-size: 1rem;
             font-weight: 500;
-            transition: background-color 0.3s;
+            transition: all 0.3s;
+            font-family: inherit;
         }
 
         button[type="submit"]:hover {
             background-color: #287855;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(29, 80, 58, 0.3);
         }
 
-        /* Search Bar */
+        /* Search Bar with Animation */
         .search-container {
-            margin: 30px 0;
+            margin: 40px 0;
             text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        .search-container.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         #searchInput {
@@ -95,32 +321,47 @@
             border-radius: 25px;
             font-size: 1rem;
             font-family: inherit;
+            transition: all 0.3s;
         }
 
         #searchInput:focus {
             outline: none;
             border-color: #287855;
-            box-shadow: 0 0 10px rgba(40, 120, 85, 0.3);
+            box-shadow: 0 0 20px rgba(40, 120, 85, 0.3);
         }
 
-        /* Filter Buttons */
+        /* Filter Buttons with Animation */
         .filter-container {
             display: flex;
             justify-content: center;
             gap: 10px;
             margin: 20px 0;
             flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out 0.2s;
+        }
+
+        .filter-container.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .filter-btn {
-            padding: 8px 20px;
+            padding: 10px 25px;
             border: 2px solid #1D503A;
             background: white;
             color: #1D503A;
-            border-radius: 20px;
+            border-radius: 25px;
             cursor: pointer;
             font-family: inherit;
             transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(29, 80, 58, 0.2);
         }
 
         .filter-btn.active {
@@ -128,91 +369,66 @@
             color: white;
         }
 
-        /* Resource Cards */
-        #eventList {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .resource-card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .resource-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .resource-card h3 {
-            color: #1D503A;
-            margin-bottom: 10px;
-        }
-
-        .resource-card .resource-link {
-            color: #287855;
-            text-decoration: none;
-            word-break: break-all;
-            display: block;
-            margin: 10px 0;
-        }
-
-        .resource-card .resource-link:hover {
-            text-decoration: underline;
-        }
-
-        .resource-card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-            grid-column: 1 / -1;
-        }
-
         /* Featured Resources */
         .featured-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-            padding: 20px;
+            gap: 25px;
+            margin: 40px 0;
+            padding: 30px;
             background: linear-gradient(135deg, #1D503A 0%, #287855 100%);
-            border-radius: 15px;
+            border-radius: 20px;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.8s ease-out;
+        }
+
+        .featured-container.visible {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .featured-card {
             background: white;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             position: relative;
-            transition: transform 0.3s;
+            transition: all 0.3s;
+            animation: slideInUp 0.6s ease-out backwards;
+        }
+
+        .featured-card:nth-child(1) { animation-delay: 0.1s; }
+        .featured-card:nth-child(2) { animation-delay: 0.2s; }
+        .featured-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .featured-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
 
         .featured-badge {
             position: absolute;
             top: -10px;
             right: -10px;
-            background: #FFD700;
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
             color: #1D503A;
-            padding: 5px 12px;
+            padding: 6px 15px;
             border-radius: 20px;
             font-weight: bold;
             font-size: 0.85rem;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .featured-card h3 {
@@ -231,23 +447,84 @@
             margin: 12px 0;
         }
 
-        /* Feature Button */
+        /* Resource Cards */
+        #eventList {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .resource-card.visible {
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .resource-card h3 {
+            color: #1D503A;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        .resource-card .resource-link {
+            color: #287855;
+            text-decoration: none;
+            word-break: break-all;
+            display: block;
+            margin: 10px 0;
+            transition: color 0.3s;
+        }
+
+        .resource-card .resource-link:hover {
+            color: #1D503A;
+            text-decoration: underline;
+        }
+
+        .resource-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px;
+            color: #666;
+            grid-column: 1 / -1;
+            font-size: 1.2rem;
+        }
+
+        /* Buttons */
         .feature-btn {
             background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
             color: #1D503A;
             border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: bold;
-            margin-top: 10px;
+            margin-top: 12px;
             transition: all 0.3s;
+            font-family: inherit;
         }
 
         .feature-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(255, 215, 0, 0.4);
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
         }
 
         .feature-btn.featured {
@@ -255,116 +532,73 @@
             color: white;
         }
 
-        .feature-btn.featured:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(108, 117, 125, 0.4);
-        }
-
-        /* Delete Button */
         .delete-btn {
             background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
             color: white;
             border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
+            padding: 8px 16px;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: bold;
-            margin-top: 10px;
-            margin-left: 5px;
+            margin-top: 12px;
+            margin-left: 8px;
             transition: all 0.3s;
+            font-family: inherit;
         }
 
         .delete-btn:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(220, 53, 69, 0.4);
+            box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Alegreya Sans SC', sans-serif;
-            background-color: #FAF5EE;
-            color: #333;
-        }
-
-
-        .images {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-            padding: 10px;
-        }
-
-        .images img {
-            height: 60px;
-            width: auto;
-            border-radius: 10px;
-        }
-
-        .images h1 {
-            margin: 0;
-            flex-grow: 1;
+        /* Hall of Fame Button */
+        .hall-of-fame-section {
             text-align: center;
+            margin: 60px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
         }
 
-        header {
-            background-color: #1D503A;
-            color: #FAF5EE;
-            padding: 20px;
-            text-align: center;
-            word-spacing: 5px;
+        .hall-of-fame-section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        header h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        header nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        header nav a {
-            color: #FAF5EE;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        header nav a:hover {
-            opacity: 0.7;
-        }
-
-        .color {
-            color: #155724;
-        }
-
-
-
-        button {
-            background-color: #1D503A;
-            color: white;
-            padding: 12px 30px;
+        .hall-of-fame-btn {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #1D503A;
+            padding: 20px 40px;
+            font-size: 1.3rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 15px;
             cursor: pointer;
-            font-size: 1rem;
-            font-weight: 500;
-            margin: 5px;
-            transition: background-color 0.3s;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
             font-family: inherit;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        button:hover {
-            background-color: #287855;
+        .hall-of-fame-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(255, 215, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h2 {
+                font-size: 2.5rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header nav {
+                flex-wrap: wrap;
+            }
         }
     </style>
 </head>
@@ -386,9 +620,25 @@
         </div>
     </header>
 
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="background-animation">
+            <div class="floating-shapes">
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h2>Community Resources</h2>
+            <p>Discover and share valuable resources that strengthen our community</p>
+        </div>
+    </section>
+
     <div class="container">
         <h2 style="color: #1D503A;">Post a Resource</h2>
-        <form id="eventForm" style="border-radius: 25px;">
+        <form id="eventForm">
             <label for="event_name">Resource Name:</label>
             <input type="text" id="event_name" name="event_name" required>
 
@@ -403,7 +653,7 @@
 
         <h2>Featured Resources</h2>
         <div id="featuredResources" class="featured-container">
-            <p style="text-align: center; color: #666;">No featured resources yet. Highlight your top 3 resources!</p>
+            <p style="text-align: center; color: #FAF5EE; margin: 20px;">No featured resources yet. Highlight your top 3 resources!</p>
         </div>
 
         <h2>Resource Directory</h2>
@@ -421,11 +671,48 @@
         <div id="eventList"></div>
     </div>
 
+    <div class="hall-of-fame-section">
+        <a href="../resources/fame.html" style="text-decoration: none;">
+            <button class="hall-of-fame-btn">⭐ Resource Hall of Fame ⭐</button>
+        </a>
+    </div>
+
     <script>
         let resources = [];
         let featuredResources = [];
 
-        // Load resources and featured from memory
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe animated elements
+        setTimeout(() => {
+            document.querySelectorAll('#eventForm, .search-container, .filter-container, .featured-container, .hall-of-fame-section').forEach(el => {
+                observer.observe(el);
+            });
+        }, 100);
+
+        // Load resources from memory
         function loadResources() {
             const stored = JSON.parse(localStorage.getItem('resources') || '[]');
             const featured = JSON.parse(localStorage.getItem('featuredResources') || '[]');
@@ -446,12 +733,12 @@
             const container = document.getElementById('featuredResources');
 
             if (featuredResources.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #FAF5EE; margin: 20px;">No featured resources yet. Highlight your top 3 resources!</p>';
+                container.innerHTML = '<p style="text-align: center; color: #FAF5EE; margin: 20px; grid-column: 1/-1;">No featured resources yet. Highlight your top 3 resources!</p>';
                 return;
             }
 
-            container.innerHTML = featuredResources.map(resource => `
-                <div class="featured-card">
+            container.innerHTML = featuredResources.map((resource, index) => `
+                <div class="featured-card" style="animation-delay: ${index * 0.1}s">
                     <span class="featured-badge">⭐ Featured</span>
                     <h3>${escapeHtml(resource.name)}</h3>
                     <a href="${escapeHtml(resource.link)}" target="_blank" class="resource-link">
@@ -478,11 +765,9 @@
             const index = featuredResources.findIndex(r => r.id === resourceId);
 
             if (index > -1) {
-                // Remove from featured
                 featuredResources.splice(index, 1);
                 alert('Resource unfeatured successfully!');
             } else {
-                // Add to featured (max 3)
                 if (featuredResources.length >= 3) {
                     alert('You can only feature up to 3 resources. Please unfeature one first.');
                     return;
@@ -502,10 +787,7 @@
                 return;
             }
 
-            // Remove from resources
             resources = resources.filter(r => r.id !== resourceId);
-
-            // Remove from featured if it was featured
             featuredResources = featuredResources.filter(r => r.id !== resourceId);
 
             saveResources();
@@ -543,10 +825,10 @@
                 return;
             }
 
-            eventList.innerHTML = resourcesToDisplay.map(resource => {
+            eventList.innerHTML = resourcesToDisplay.map((resource, index) => {
                 const isFeatured = featuredResources.some(r => r.id === resource.id);
                 return `
-                    <div class="resource-card">
+                    <div class="resource-card" style="animation-delay: ${index * 0.05}s">
                         <h3>${escapeHtml(resource.name)}</h3>
                         <a href="${escapeHtml(resource.link)}" target="_blank" class="resource-link">
                             ${escapeHtml(resource.link)}
@@ -564,6 +846,13 @@
                     </div>
                 `;
             }).join('');
+
+            // Animate new cards
+            setTimeout(() => {
+                document.querySelectorAll('.resource-card').forEach(card => {
+                    observer.observe(card);
+                });
+            }, 50);
         }
 
         // Search functionality
@@ -605,8 +894,6 @@
         // Initialize
         loadResources();
     </script>
-    <script src="script.js"></script>
-    <script src="../header.js"></script>
 </body>
 
 </html>

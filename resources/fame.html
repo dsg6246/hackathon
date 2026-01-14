@@ -16,6 +16,7 @@
             font-family: 'Alegreya Sans SC', sans-serif;
             background-color: #FAF5EE;
             color: #333;
+            overflow-x: hidden;
         }
 
         .images {
@@ -23,13 +24,18 @@
             align-items: center;
             justify-content: center;
             gap: 20px;
-            padding: 10px;
+            padding: 0px;
         }
 
         .images img {
-            height: 60px;
+            height: 80px;
             width: auto;
             border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .images img:hover {
+            transform: scale(1.05);
         }
 
         .images h1 {
@@ -39,15 +45,31 @@
         }
 
         header {
-            background-color: #1D503A;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(29, 80, 58, 0.95);
+            backdrop-filter: blur(10px);
             color: #FAF5EE;
             padding: 20px;
             text-align: center;
             word-spacing: 5px;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 12px 20px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header.scrolled .images img {
+            height: 60px;
         }
 
         header h1 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 10px;
         }
         
@@ -61,48 +83,174 @@
         header nav a {
             color: #FAF5EE;
             text-decoration: none;
-            transition: opacity 0.3s;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            position: relative;
         }
 
-        header nav a:hover {
-            opacity: 0.7;
+        header nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FAF5EE;
+            transition: width 0.3s;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section with Floating Shapes */
+        .hero-section {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 0;
+            margin-bottom: 60px;
+        }
+
+        .background-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1D503A 0%, #287855 50%, #1D503A 100%);
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .shape {
+            position: absolute;
+            background: rgba(250, 245, 238, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            left: 70%;
+            animation-delay: 2s;
+        }
+
+        .shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            top: 30%;
+            right: 15%;
+            animation-delay: 4s;
+        }
+
+        .shape:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            bottom: 10%;
+            left: 50%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(30px, -30px) rotate(90deg);
+            }
+            50% {
+                transform: translate(-20px, 20px) rotate(180deg);
+            }
+            75% {
+                transform: translate(20px, 30px) rotate(270deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #FAF5EE;
+            max-width: 900px;
+            padding: 40px;
+            padding-top: 100px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .trophy-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: bounce 2s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-        }
-
-        .hero-section {
-            text-align: center;
             padding: 40px 20px;
-            background: linear-gradient(135deg, #1D503A 0%, #287855 100%);
-            border-radius: 20px;
-            margin-bottom: 40px;
-            color: #FAF5EE;
-        }
-
-        .hero-section h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-
-        .hero-section p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .trophy-icon {
-            font-size: 4rem;
-            margin-bottom: 20px;
         }
 
         h2 {
             color: #287855;
-            margin: 30px 0 20px 0;
+            margin: 50px 0 30px 0;
             text-align: center;
-            font-size: 1.8rem;
+            font-size: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+
+        h2.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Podium Section */
@@ -110,68 +258,117 @@
             display: flex;
             justify-content: center;
             align-items: flex-end;
-            gap: 20px;
+            gap: 25px;
             margin: 50px 0;
             flex-wrap: wrap;
+            perspective: 1000px;
         }
 
         .podium-card {
             background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             position: relative;
-            transition: transform 0.3s;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             min-width: 280px;
             max-width: 350px;
+            opacity: 0;
+            transform: translateY(50px) rotateX(10deg);
+        }
+
+        .podium-card.visible {
+            opacity: 1;
+            transform: translateY(0) rotateX(0);
         }
 
         .podium-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
         }
 
         .podium-card.first {
             order: 2;
-            border: 3px solid #FFD700;
-            min-height: 380px;
+            border: 4px solid #FFD700;
+            min-height: 400px;
+            transition-delay: 0.2s;
         }
 
         .podium-card.second {
             order: 1;
-            border: 3px solid #C0C0C0;
-            min-height: 340px;
+            border: 4px solid #C0C0C0;
+            min-height: 360px;
+            transition-delay: 0.1s;
         }
 
         .podium-card.third {
             order: 3;
-            border: 3px solid #CD7F32;
-            min-height: 320px;
+            border: 4px solid #CD7F32;
+            min-height: 340px;
+            transition-delay: 0.3s;
         }
 
         .medal {
             position: absolute;
-            top: -20px;
+            top: -25px;
             left: 50%;
             transform: translateX(-50%);
-            font-size: 3rem;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            font-size: 3.5rem;
+            filter: drop-shadow(0 6px 12px rgba(0,0,0,0.4));
+            animation: swing 3s ease-in-out infinite;
+        }
+
+        @keyframes swing {
+            0%, 100% {
+                transform: translateX(-50%) rotate(-5deg);
+            }
+            50% {
+                transform: translateX(-50%) rotate(5deg);
+            }
         }
 
         .rank-number {
             text-align: center;
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
-            margin: 20px 0 10px 0;
+            margin: 25px 0 15px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
-        .first .rank-number { color: #FFD700; }
-        .second .rank-number { color: #C0C0C0; }
-        .third .rank-number { color: #CD7F32; }
+        .first .rank-number { 
+            color: #FFD700;
+            animation: glow-gold 2s ease-in-out infinite;
+        }
+        
+        .second .rank-number { 
+            color: #C0C0C0;
+            animation: glow-silver 2s ease-in-out infinite;
+        }
+        
+        .third .rank-number { 
+            color: #CD7F32;
+            animation: glow-bronze 2s ease-in-out infinite;
+        }
+
+        @keyframes glow-gold {
+            0%, 100% { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6); }
+        }
+
+        @keyframes glow-silver {
+            0%, 100% { text-shadow: 0 0 10px rgba(192, 192, 192, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(192, 192, 192, 0.8), 0 0 30px rgba(192, 192, 192, 0.6); }
+        }
+
+        @keyframes glow-bronze {
+            0%, 100% { text-shadow: 0 0 10px rgba(205, 127, 50, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(205, 127, 50, 0.8), 0 0 30px rgba(205, 127, 50, 0.6); }
+        }
 
         .podium-card h3 {
             color: #1D503A;
-            margin-bottom: 12px;
-            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
             text-align: center;
         }
 
@@ -180,26 +377,28 @@
             text-decoration: none;
             word-break: break-all;
             display: block;
-            margin: 12px 0;
+            margin: 15px 0;
             text-align: center;
             font-weight: 500;
+            transition: color 0.3s;
         }
 
         .podium-card .resource-link:hover {
+            color: #1D503A;
             text-decoration: underline;
         }
 
         .podium-card p {
             color: #666;
             line-height: 1.6;
-            margin: 12px 0;
+            margin: 15px 0;
         }
 
         .stats {
             display: flex;
             justify-content: space-around;
-            margin-top: 15px;
-            padding-top: 15px;
+            margin-top: 20px;
+            padding-top: 20px;
             border-top: 2px solid #eee;
         }
 
@@ -208,13 +407,13 @@
         }
 
         .stat-value {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: bold;
             color: #1D503A;
         }
 
         .stat-label {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #666;
             margin-top: 5px;
         }
@@ -223,37 +422,60 @@
         .hall-of-fame-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
+            gap: 25px;
+            margin-top: 40px;
         }
 
         .fame-card {
             background: white;
             border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
             border-left: 5px solid #287855;
+            opacity: 0;
+            transform: translateY(30px);
         }
 
+        .fame-card.visible {
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fame-card:nth-child(1) { animation-delay: 0.1s; }
+        .fame-card:nth-child(2) { animation-delay: 0.15s; }
+        .fame-card:nth-child(3) { animation-delay: 0.2s; }
+        .fame-card:nth-child(4) { animation-delay: 0.25s; }
+        .fame-card:nth-child(5) { animation-delay: 0.3s; }
+        .fame-card:nth-child(6) { animation-delay: 0.35s; }
+
         .fame-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            border-left-width: 8px;
         }
 
         .fame-rank {
             display: inline-block;
             background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
             color: #1D503A;
-            padding: 5px 15px;
+            padding: 6px 18px;
             border-radius: 20px;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
         }
 
         .fame-card h3 {
             color: #1D503A;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
         }
 
         .fame-card .resource-link {
@@ -261,10 +483,12 @@
             text-decoration: none;
             word-break: break-all;
             display: block;
-            margin: 10px 0;
+            margin: 12px 0;
+            transition: color 0.3s;
         }
 
         .fame-card .resource-link:hover {
+            color: #1D503A;
             text-decoration: underline;
         }
 
@@ -285,28 +509,53 @@
             background: linear-gradient(135deg, #1D503A 0%, #287855 100%);
             color: white;
             border: none;
-            padding: 8px 20px;
-            border-radius: 8px;
+            padding: 10px 24px;
+            border-radius: 10px;
             cursor: pointer;
             font-family: inherit;
             font-weight: 500;
-            margin-top: 10px;
+            margin-top: 15px;
             transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(29, 80, 58, 0.2);
         }
 
         .vote-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 8px rgba(29, 80, 58, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(29, 80, 58, 0.4);
         }
 
         .vote-btn:disabled {
-            background: #ccc;
+            background: linear-gradient(135deg, #ccc 0%, #999 100%);
             cursor: not-allowed;
         }
 
         .vote-btn:disabled:hover {
             transform: none;
-            box-shadow: none;
+            box-shadow: 0 4px 10px rgba(29, 80, 58, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .trophy-icon {
+                font-size: 3.5rem;
+            }
+
+            .podium-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .podium-card {
+                order: 0 !important;
+                min-height: auto !important;
+            }
         }
     </style>
 </head>
@@ -327,13 +576,24 @@
         </div>
     </header>
 
-    <div class="container">
-        <div class="hero-section">
+    <!-- Hero Section with Floating Shapes -->
+    <section class="hero-section">
+        <div class="background-animation">
+            <div class="floating-shapes">
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+        </div>
+        <div class="hero-content">
             <div class="trophy-icon">🏆</div>
             <h1>Resources Hall of Fame</h1>
             <p>Celebrating our community's most valued and impactful resources</p>
         </div>
+    </section>
 
+    <div class="container">
         <h2>🥇 Top 3 Resources 🥇</h2>
         <div id="podiumContainer" class="podium-container">
             <div class="no-results">Loading top resources...</div>
@@ -347,20 +607,57 @@
 
     <script>
         let resources = [];
+        let userVotes = new Set();
+        let hasVotedForTopThree = false;
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
         // Load resources from localStorage
         function loadResources() {
             const stored = JSON.parse(localStorage.getItem('resources') || '[]');
             resources = stored.map(r => ({
                 ...r,
-                votes: r.votes || Math.floor(Math.random() * 100) + 20 // Demo votes
+                votes: r.votes || 0
             }));
             
-            // Sort by votes
+            const storedVotes = JSON.parse(localStorage.getItem('userVotes') || '[]');
+            userVotes = new Set(storedVotes);
+            
+            hasVotedForTopThree = localStorage.getItem('hasVotedForTopThree') === 'true';
+            
             resources.sort((a, b) => b.votes - a.votes);
             
             displayPodium();
             displayHallOfFame();
+
+            // Observe elements for animations
+            setTimeout(() => {
+                document.querySelectorAll('h2').forEach(h => observer.observe(h));
+                document.querySelectorAll('.podium-card').forEach(card => observer.observe(card));
+                document.querySelectorAll('.fame-card').forEach(card => observer.observe(card));
+            }, 100);
         }
 
         // Display top 3 on podium
@@ -394,7 +691,9 @@
                             <div class="stat-label">Posted</div>
                         </div>
                     </div>
-                    <button class="vote-btn" onclick="voteResource(${resource.id})">👍 Vote</button>
+                    <button class="vote-btn" onclick="voteResource(${resource.id}, true)" ${userVotes.has(resource.id) || hasVotedForTopThree ? 'disabled' : ''}>
+                        ${userVotes.has(resource.id) ? '✓ Voted' : hasVotedForTopThree ? '✓ Already Voted' : '👍 Vote'}
+                    </button>
                 </div>
             `).join('');
         }
@@ -426,19 +725,36 @@
                             <div class="stat-label">Posted</div>
                         </div>
                     </div>
-                    <button class="vote-btn" onclick="voteResource(${resource.id})">👍 Vote</button>
+                    <button class="vote-btn" onclick="voteResource(${resource.id})" ${userVotes.has(resource.id) ? 'disabled' : ''}>
+                        ${userVotes.has(resource.id) ? '✓ Voted' : '👍 Vote'}
+                    </button>
                 </div>
             `).join('');
         }
 
         // Vote for a resource
-        function voteResource(resourceId) {
+        function voteResource(resourceId, isTopThree = false) {
+            if (userVotes.has(resourceId)) {
+                return;
+            }
+
+            if (isTopThree && hasVotedForTopThree) {
+                return;
+            }
+
             const resource = resources.find(r => r.id === resourceId);
             if (!resource) return;
 
             resource.votes = (resource.votes || 0) + 1;
             
-            // Update in localStorage
+            userVotes.add(resourceId);
+            localStorage.setItem('userVotes', JSON.stringify([...userVotes]));
+            
+            if (isTopThree) {
+                hasVotedForTopThree = true;
+                localStorage.setItem('hasVotedForTopThree', 'true');
+            }
+            
             const storedResources = JSON.parse(localStorage.getItem('resources') || '[]');
             const index = storedResources.findIndex(r => r.id === resourceId);
             if (index > -1) {
@@ -446,10 +762,15 @@
                 localStorage.setItem('resources', JSON.stringify(storedResources));
             }
 
-            // Re-sort and display
             resources.sort((a, b) => b.votes - a.votes);
             displayPodium();
             displayHallOfFame();
+
+            // Re-observe new elements
+            setTimeout(() => {
+                document.querySelectorAll('.podium-card').forEach(card => observer.observe(card));
+                document.querySelectorAll('.fame-card').forEach(card => observer.observe(card));
+            }, 100);
         }
 
         // Escape HTML to prevent XSS
